@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+html {
+    background-color: teal;
+}
+
+body {
+    background-color: white;
+    margin: 2rem;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.country {
+    /* background-color: red; */
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 4px;
+    border: 2px solid black;
+}
+
+.country-name {
+    border-bottom: 2px solid red;
+    background-color: rgb(221, 218, 218);
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.country-info {
+    /* padding: 1rem; */
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+}
+
+.close {
+    animation-name: closeAnime;
+    animation-duration: 1s;
+    transition: all 1s;
+}
+
+
+/* .open {
+    transform: scale(1);
+    transition: all 1s;
+    height: auto;
+} */
+
+@keyframes closeAnime {
+    0% {
+        height: 100%;
+        background-color: red;
+    }
+    100% {
+        height: 0;
+        background-color: blue;
+    }
+}

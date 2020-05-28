@@ -35,7 +35,7 @@ function insert(data) {
         // </tr>`;
         let finalData = `<div class="country">
           <h2 class="country-name">${data.Countries[i].Country}<span><button href="#"  target-tab="${data.Countries[i].CountryCode}"class="btn-x">x</button></span></h2>
-          <div class="country-info open" id="${data.Countries[i].CountryCode}" close-tab="yes" style="height: 100px;">
+          <div class="country-info open" id="${data.Countries[i].CountryCode}" close-tab="no" style="height: 10px;">
           <p>total confirmed:${data.Countries[i].TotalConfirmed}</p>
           <p>total deaths:${data.Countries[i].TotalDeaths}</p>
           <p>total Recoverd:${data.Countries[i].TotalRecovered}</p>

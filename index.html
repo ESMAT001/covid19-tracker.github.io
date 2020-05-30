@@ -22,14 +22,24 @@
     <title>Covid 19</title>
 </head>
 <body>
+    <!-- loader -->
+    <div class="loader">
+        <h3 class="loader-text">
+        loading
+        </h3>
+   
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="10%" height="10%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+           <circle cx="50" cy="50" fill="none" stroke="#fff" stroke-width="3" r="37" stroke-dasharray="174.35839227423352 60.119464091411174" transform="rotate(83.2789 50 50)">
+             <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.0416666666666665s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
+           </circle>
+           </svg>
+       </div>
+
+    <!-- /loader -->
 <header></header>
 <main>
-    <section class="info">
-        <div class="content">
-            <p class="para">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque consequatur quas expedita ratione facilis praesentium, veniam harum adipisci quisquam dolores atque vitae iusto suscipit aspernatur, odio possimus provident. Voluptates, iusto?
-            </p>
-        </div>
+
+   
     </section>
     <section class="search">
         <div class="search-box">
@@ -66,120 +76,45 @@
        </table>
     </section>
     <section class="countries">
-        <!--         <div class="row">
-            <div class="country">
-                <div class="country-control">
-                    <h3 class="country-name" >afghanistan</h3>
-                    <button class="btn-x" target-tab="ind">
-                        <span>x</span>
-                    </button>
-                </div>
-                <div class="country-info" id="ind">
-                    <div class="country-info-para">
-                        <div class="active country-info-para-date">
-                            <p class=>Active :</p>
-                            <p class="yellowText">14455</p>
-                            <p class="yellowText">45%</p>
-                        </div>
-                        <div class="death country-info-para-date">
-                         <p class=>Death :</p>
-                         <p class="redText">14455</p>
-                         <p class="redText">45%</p>
-                        </div>
-                       <div class="recoverd country-info-para-date">
-                         <p class=>Recoverd :</p>
-                         <p class="greenText">14455</p>
-                         <p class="greenText">45%</p>
-                       </div>
-                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="country">
-                <div class="country-control">
-                    <h3 class="country-name" >india</h3>
-                    <button class="btn-x" target-tab="ind">
-                        <span>x</span>
-                    </button>
-                </div>
-                <div class="country-info" id="ind">
-                    <div class="country-info-para">
-                        <div class="active country-info-para-date">
-                            <p class=>Active :</p>
-                            <p class="yellowText">14455</p>
-                            <p class="yellowText">45%</p>
-                        </div>
-                        <div class="death country-info-para-date">
-                         <p class=>Death :</p>
-                         <p class="redText">14455</p>
-                         <p class="redText">45%</p>
-                        </div>
-                       <div class="recoverd country-info-para-date">
-                         <p class=>Recoverd :</p>
-                         <p class="greenText">14455</p>
-                         <p class="greenText">45%</p>
-                       </div>
-                     </div>
-                </div>
-            </div>
-           <div class="country">
-            <div class="country-control">
-                <h3 class="country-name" >india</h3>
-                <button class="btn-x" target-tab="ind">
-                    <span>x</span>
-                </button>
-            </div>
-            <div class="country-info" id="ind">
-                <div class="country-info-para">
-                    <div class="active country-info-para-date">
-                        <p class=>Active :</p>
-                        <p class="yellowText">14455</p>
-                        <p class="yellowText">45%</p>
-                    </div>
-                    <div class="death country-info-para-date">
-                     <p class=>Death :</p>
-                     <p class="redText">14455</p>
-                     <p class="redText">45%</p>
-                    </div>
-                   <div class="recoverd country-info-para-date">
-                     <p class=>Recoverd :</p>
-                     <p class="greenText">14455</p>
-                     <p class="greenText">45%</p>
-                   </div>
-                 </div>
-            </div>
-        </div>
-       <div class="country">
+        <!-- country -->
+       <!-- <div class="country">
         <div class="country-control">
-            <h3 class="country-name" >india</h3>
-            <button class="btn-x" target-tab="ind">
+            <div class="country-name" >
+        
+                    <img class="flag-icon" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/az.svg" alt="country-flag" ><p>
+                      afghanistan
+                    </p>
+                
+            </div>
+            <button class="btn-x" target-tab="${countryCode}">
                 <span>x</span>
             </button>
         </div>
-        <div class="country-info" id="ind">
+        <div class="country-info" id="${countryCode}">
             <div class="country-info-para">
                 <div class="active country-info-para-date">
-                    <p class=>Active :</p>
-                    <p class="yellowText">14455</p>
-                    <p class="yellowText">45%</p>
+                    <p class=>confirmed :</p>
+                    <p class="">${totalConfirmed}</p>
                 </div>
+                <div class="active country-info-para-date">
+                <p class=>active :</p>
+                <p class="yellowText">23</p>
+                <p class="yellowText">21%</p>
+            </div>
                 <div class="death country-info-para-date">
                  <p class=>Death :</p>
-                 <p class="redText">14455</p>
-                 <p class="redText">45%</p>
+                 <p class="redText">22</p>
+                 <p class="redText">23%</p>
                 </div>
                <div class="recoverd country-info-para-date">
                  <p class=>Recoverd :</p>
-                 <p class="greenText">14455</p>
-                 <p class="greenText">45%</p>
+                 <p class="greenText">56</p>
+                 <p class="greenText">12%</p>
                </div>
              </div>
         </div>
-    </div>
-
-        </div>
-    -->
+    </div> -->
+  <!-- country -->
 
     </section>
 </main>

@@ -5,7 +5,7 @@
     font-family: 'Raleway', sans-serif;
 }
 html{
-    background-color: teal;
+    background-color:#08aae1;
 }
 body{
     background-color: #fff;
@@ -19,6 +19,32 @@ body{
 .para{
     font-size: 1rem;
 }
+/* loader */
+
+.loader{
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background-color: #08aae1;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.svg{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.loader-text{
+    color: white;
+    position: fixed;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/* /loader */
 /* header */
 
 /* /header */
@@ -58,6 +84,10 @@ body{
     text-transform: capitalize;
     font-size: 1rem;
     color: teal;
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 .btn-x{
     font-family: sans-serif;
@@ -135,7 +165,7 @@ td:not(:last-child){
     border-right: 1px solid steelblue;
 }
 .badge {
-    background-color: red;
+
     border: none;
     color: white;
     font-size: 0.7rem;
@@ -145,6 +175,19 @@ td:not(:last-child){
     padding: 8px 5px;
     width: 30px;
     height:30px;
+}
+.badge-red{
+    background-color: red;
+}
+.badge-green{
+    background-color: yellowgreen;
+}
+
+
+.flag-icon{
+    width: 2.2rem;
+    border-radius: 4px;
+    margin-right: 10px;
 }
 /* media query for desktop */
 
@@ -158,9 +201,13 @@ td:not(:last-child){
 .country{
     width: 32%;
 }
-
+.flag-icon{
+    margin-right: 10px;
 }
-
+.country-name{
+    width: initial;
+}
+}
 
 
 /* /main */

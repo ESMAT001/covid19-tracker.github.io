@@ -1,154 +1,338 @@
-$(document).ready(()=>{
-    var slide;
-    if(window.matchMedia("(min-width:600px)").matches){
-      slide=false;
-    }else{
-        slide=true;
-    }
+$(document).ready(() => {
 
-//ajax start////////
-async function getData() {
-    try {
-        let data = await fetch("https://api.covid19api.com/summary");
-        // console.log(data);
-        if (data.status==200) {
-        console.log("yesss");
-            data = await data.json();
+
+    //ajax start////////
+    async function getData() { //https://api.coronatracker.com/v3/stats/worldometer/country
+        try {
+            // let data = await fetch("https://api.covid19api.com/summary");
+            let data = await fetch("https://api.coronatracker.com/v3/stats/worldometer/country");
             // console.log(data);
-            insert(data);
-            search(data);
-            //close btn event listenner
-            console.log("slide"+slide)
-            $(".loader").fadeOut(800);
-            if(slide){
-                $(".country-info").slideUp(800);
-                $(".btn-x").click((e)=>{
-                    let id=e.target.parentNode.getAttribute("target-tab");
-                    console.log(e.target.parentNode);
-                    console.log(id)
-                    $(`#${id}`).slideToggle();
-                    });
-            }else{
-                $(".btn-x").hide();              
+            if (data.status == 200) {
+                console.log("yesss");
+                data = await data.json();
+                console.log(data);
+                insert(data);
+                search(data);
+                $(".loader").fadeOut(800);
+                getGlobalData();
+            } else {
+                console.log("NOo")
+                getData();
             }
-           
-                 
-        }else{
-           console.log("NOo")
-           getData();
+            //////////////////////
+
+        } catch (err) {
+            console.error(err);
         }
-         //////////////////////
 
-    } catch (err) {
-        console.error(err);
     }
 
-}
+    function insert(data) {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].countryCode == null) {
+                continue;
+            } else {
+                let country = data[i].country;
+                let total = data[i].totalConfirmed;
+                let death = data[i].totalDeaths;
+                let critical = data[i].totalCritical;
+                let recovered = data[i].totalRecovered;
+                let active = data[i].activeCases;
+                let html = ` <tr class="tr">
+                <td>${country}</td>
+                <td>${total}</td>
+                <td>${death} <span>${getPercent(total,death)}%</span></td>
+                <td>${critical} <span>${getPercent(active,critical)}%</span></td>
+                <td>${recovered} <span>${getPercent(total,recovered)}%</span></td>
+                <td>${active} <span>${getPercent(total,active)}%</span></td>
+               </tr>`
 
-function insert(data) {
-   let index=0;
-   for(let i=0;i<Math.floor(data.Countries.length/4);i++){
-    let row=document.createElement("div");
-    row.classList.add("row");
-    let textData="";
-    for(let j=0;j<3;j++){
-        let country=data.Countries[index].Country;
-        let totalActive=data.Countries[index].TotalConfirmed-(data.Countries[index].TotalDeaths+data.Countries[index].TotalRecovered);
-        let countryCode=data.Countries[index].CountryCode;
-        let totalConfirmed=data.Countries[index].TotalConfirmed;
-        let totalDeath=data.Countries[index].TotalDeaths;
-        let totalRecovered=data.Countries[index].TotalRecovered;
-       textData+=`<!-- country -->
-       <div class="country">
-           <div class="country-control">
-               <div class="country-name" >
-               <img class="flag-icon" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${countryCode.toLowerCase()}.svg" alt="${country}-flag" ><p>
-               ${country}
-             </p>
-               </div>
-               <button class="btn-x" target-tab="${countryCode}">
-                   <span>x</span>
-               </button>
-           </div>
-           <div class="country-info" id="${countryCode}">
-               <div class="country-info-para">
-                   <div class="active country-info-para-date">
-                       <p class=>confirmed :</p>
-                       <p class="">${totalConfirmed}</p>
-                   </div>
-                   <div class="active country-info-para-date">
-                   <p class=>active :</p>
-                   <p class="yellowText">${totalActive}</p>
-                   <p class="yellowText">${
-                       getPercent(totalConfirmed,totalActive)
-                   }%</p>
-               </div>
-                   <div class="death country-info-para-date">
-                    <p class=>Death :</p>
-                    <p class="redText">${totalDeath}</p>
-                    <p class="redText">${getPercent(totalConfirmed,totalDeath)}%</p>
-                   </div>
-                  <div class="recoverd country-info-para-date">
-                    <p class=>Recoverd :</p>
-                    <p class="greenText">${totalRecovered}</p>
-                    <p class="greenText">${getPercent(totalConfirmed,totalRecovered)}%</p>
-                  </div>
-                </div>
-           </div>
-       </div>
-     <!-- country -->`
-     index++;
-    //  console.log(index)
+                $("#all-countries").append(html);
+            }
+        }
+        //datalist part
+        var datalist = "";
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].countryCode == null) {
+                continue;
+            } else {
+                datalist += `<option value="${data[i].countryCode}"> <img class="flag-icon" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${data[i].countryCode.toLowerCase()}.svg" alt="${data[i].country}-flag" >${data[i].country}</option>`
+            }
+        }
+        $("#list").append(datalist);
     }
-    row.innerHTML=textData;
-    $(".countries").append(row);
-   }
-//datalist part
-var datalist="";
-for(let i=0;i<data.Countries.length;i++){
-   datalist+=`<option value="${data.Countries[i].CountryCode}"> <img class="flag-icon" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${data.Countries[i].CountryCode.toLowerCase()}.svg" alt="${data.Countries[i].Country}-flag" >${data.Countries[i].Country}</option>`
-}
-$("#list").append(datalist);
+    getData();
 
+    ////////ajax end/////
+    //global data//
+    async function getGlobalData() {
+        try {
+            let data = await fetch("https://api.coronatracker.com/v3/stats/worldometer/global");
+            if (data.status == 200) {
+                console.log("yesss");
+                data = await data.json();
+                // console.log(data);
+                allData = data;
+                console.log(allData);
+                insertGlobalData(allData)
+                if (true) {
+                    insertClientCountryData("AF")
+                }
+            } else {
+                console.log("NOo")
+                getData();
+            }
+            //////////////////////
 
-
-
-}
-getData();
-
-////////ajax end/////
-//search start///
-function search(data){
-    document.querySelector("#btn-search").addEventListener("click",()=>{
-    let code=document.getElementById("textBox").value;
-    var country;
-    for(let i=0;i<data.Countries.length;i++){
-       if (code===data.Countries[i].CountryCode) {
-           country=data.Countries[i];
-       }
+        } catch (err) {
+            console.error(err);
+        }
     }
 
-    console.log(country);
-    let trow=`<tr>
-    <td class="td">
-       <p class="para"> ${country.Country}</p>
-    </td>
-    <td class="td">
-      <p class="para">${country.TotalConfirmed}</p>
-    </td>
-    <td class="td">
-      <p class="para">${country.TotalDeaths}&nbsp;<span class="badge badge-red">${getPercent(country.TotalConfirmed,country.TotalDeaths)}%</span></p>
-    </td>
-    <td class="td">
-      <p class="para">${country.TotalRecovered} 	&nbsp;<span class="badge badge-green">${getPercent(country.TotalConfirmed,country.TotalRecovered)}%</span></p>
-    </td>
-    </tr>`;
-    $(".tbody").append(trow);
-})}
+    function insertGlobalData(allData) {
+        let total = allData.totalConfirmed;
+        let death = allData.totalDeaths;
+        let recovered = allData.totalRecovered;
+        let active = allData.totalActiveCases;
+        $("#global-total-case").text(total)
+        $("#total-death-number").text(death)
+        $("#total-death-number-percent").text(getPercent(total, death) + "%")
+        $("#total-recovered-number").text(recovered)
+        $("#total-recovered-number-percent").text(getPercent(total, recovered) + "%")
+        $("#total-active-number").text(active)
+        $("#total-active-number-percent").text(getPercent(total, active))
+        createChartBar(total, death, recovered, active);
 
+    }
+    //client country data
+    async function insertClientCountryData(countryCode) {
+        try {
+            let data = await fetch(`https://api.coronatracker.com/v4/analytics/trend/country?countryCode=${countryCode}&startDate=2020-01-01&endDate=2020-09-01`);
+            if (data.status == 200) {
+                console.log("yesss");
+                data = await data.json();
+                // console.log(data);
+                let total = [];
+                let death = [];
+                let recoverd = [];
+                let date = [];
+                for (let i = 0; i < data.length; i++) {
+                    total.push(data[i].total_confirmed);
+                    death.push(data[i].total_deaths);
+                    recoverd.push(data[i].total_recovered);
+                    date.push(data[i].last_updated.slice(5, 10));
+                }
+                console.log(total);
+                console.log(death);
+                console.log(recoverd);
+                console.log(date);
+                createCharLine(date, death, recoverd, total);
+            } else {
+                console.log("NOo")
+                getData();
+            }
+            //////////////////////
 
-///search end///
+        } catch (err) {
+            console.error(err);
+        }
+    }
+    // Bar chart
+    function createChartBar(total, death, recoverd, active) {
+        var ctx = document.getElementById('canvas-global-data').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    backgroundColor: "rgba(255,55,55,0)",
+                    label: 'total',
+                    data: [total],
+                    backgroundColor: [
+                        "rgba(0, 0, 0, 0.692)"
+                    ],
+                    borderColor: [
+                        "rgba(0, 0, 0, 0.692)",
+                    ],
+                    borderWidth: 1,
+                    order: 1
+                }, {
+                    backgroundColor: "rgba(255,55,55,0)",
+                    label: 'death',
+                    data: [death],
+                    backgroundColor: [
+                        "rgba(255, 0, 0, 0.815)"
+                    ],
+                    borderColor: [
+                        "rgba(255, 0, 0, 0.815)"
+                    ],
+                    borderWidth: 1,
+                    order: 1
+                }, {
+                    backgroundColor: "rgba(255,55,55,0)",
+                    label: 'recoverd',
+                    data: [recoverd],
+                    backgroundColor: [
+                        "rgba(31, 247, 78, 0.815)"
+                    ],
+                    borderColor: [
+                        "rgba(31, 247, 78, 0.815)"
+                    ],
+                    borderWidth: 1,
+                    order: 2
+                }, {
+                    backgroundColor: "rgba(255,55,55,0)",
+                    label: 'active',
+                    data: [active],
+                    backgroundColor: [
+                        "rgba(243, 247, 31, 0.815)"
+                    ],
+                    borderColor: [
+                        "rgba(243, 247, 31, 0.815)"
+                    ],
+                    borderWidth: 1,
+                    order: 1
+                }]
+            },
+            options: {
+                legend: {
+                    labels: {
+                        // This more specific font property overrides the global property
+                        fontColor: 'black',
+                        // fontFamily: C,
+                        // fontSize: "20px"
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 10,
+                        top: 50,
+                        bottom: 0
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Custom Chart Title',
+                    fontFamily: 'Raleway',
+                    defaultFontSize: 20
+                },
+                animation: {
+                    duration: 5000
+                },
+
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        })
+    }
+    //line chart
+    function createCharLine(date, death, recoverd, total) {
+        var ctx = document.getElementById('canvas-client-country-data').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: date,
+                datasets: [{
+                    backgroundColor: "rgba(255,55,55,0)",
+                    label: 'death',
+                    data: death,
+                    backgroundColor: [
+                        "rgba(255, 0, 0, 0.815)"
+                    ],
+                    borderColor: [
+                        "rgba(255, 0, 0, 0.815)"
+                    ],
+                    borderWidth: 1,
+                    order: 1
+                }, {
+                    backgroundColor: "rgba(255,55,55,0)",
+                    label: 'recoverd',
+                    data: recoverd,
+                    backgroundColor: [
+                        "rgba(31, 247, 78, 0.815)"
+                    ],
+                    borderColor: [
+                        "rgba(31, 247, 78, 0.815)"
+                    ],
+                    borderWidth: 1,
+                    order: 2
+                }, {
+                    backgroundColor: "rgba(255,55,55,0)",
+                    label: 'active',
+                    data: total,
+                    backgroundColor: [
+                        "rgba(243, 247, 31, 0.815)"
+                    ],
+                    borderColor: [
+                        "rgba(243, 247, 31, 0.815)"
+                    ],
+                    borderWidth: 1,
+                    order: 1
+                }]
+            },
+            options: {
+
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 10,
+                        top: 50,
+                        bottom: 0
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Custom Chart Title'
+                },
+                animation: {
+                    duration: 2000
+                },
+
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        })
+    }
+    //search start///
+    function search(data) {
+        document.querySelector("#btn-search").addEventListener("click", () => {
+            let code = document.getElementById("textBox").value;
+            for (let i = 0; i < data.length; i++) {
+                if (code === data[i].countryCode) {
+                    let country = data[i].country;
+                    let total = data[i].totalConfirmed;
+                    let death = data[i].totalDeaths;
+                    let critical = data[i].totalCritical;
+                    let recovered = data[i].totalRecovered;
+                    let active = data[i].activeCases;
+                    console.log(country);
+                    let trow = ` <tr class="tr">
+            <td>${country}</td>
+            <td>${total}</td>
+            <td>${death} <span>${getPercent(total,death)}%</span></td>
+            <td>${critical} <span>${getPercent(active,critical)}%</span></td>
+            <td>${recovered} <span>${getPercent(total,recovered)}%</span></td>
+            <td>${active} <span>${getPercent(total,active)}%</span></td>
+           </tr>`;
+                    $("#search-tbody").append(trow);
+                }
+            }
+        })
+    }
+    ///search end///
 })
-function getPercent(total,current){
-return ((100*current)/total).toFixed(1);
+
+function getPercent(total, current) {
+    return ((100 * current) / total).toFixed(1);
 }

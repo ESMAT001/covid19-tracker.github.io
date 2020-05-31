@@ -1,83 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">   
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 
     <!-- font -->
-     <!-- fonts -->
-     <link href="https://fonts.googleapis.com/css?family=Kalam|Raleway&display=swap" rel="stylesheet">
-     <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&amp;display=swap" rel="stylesheet"> -->
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Kalam|Raleway&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&amp;display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 
-      <!-- jquery -->
+    <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
-     <!-- css -->
-     <link rel="stylesheet" href="style.css">
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
     <title>Covid 19</title>
 </head>
+
 <body>
     <!-- loader -->
     <div class="loader">
         <h3 class="loader-text">
-        loading
+            loading
         </h3>
-   
+
         <svg class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="10%" height="10%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
            <circle cx="50" cy="50" fill="none" stroke="#fff" stroke-width="3" r="37" stroke-dasharray="174.35839227423352 60.119464091411174" transform="rotate(83.2789 50 50)">
              <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.0416666666666665s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
            </circle>
            </svg>
-       </div>
-
+    </div>
     <!-- /loader -->
-<header></header>
-<main>
+    <header>
+        <h2>corna virus tracker</h2>
+    </header>
+    <main>
+        <section class="intro">
+            <h2>hi</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem placeat cum, optio voluptatibus accusamus itaque voluptates eveniet nihil, atque, quas ducimus! Repellendus atque impedit assumenda ea doloribus excepturi accusamus ratione!</p>
+        </section>
+        <h2 class="text-h2-global">Global</h2>
 
-   
-    </section>
-    <section class="search">
-        <div class="search-box">
-          <input type="text" name="text" list="list" class="text-box" id="textBox" placeholder="enter the country name">
-          <datalist  id="list">
+        <section class="global-all">
+            <div class="global" id="global">
+                <div class="global-total">
+                    <p class="global-total-text total">Total cases : </p>
+                    <p class="global-total-number total" id="global-total-case">56765670</p>
+                </div>
+                <div class="global-cases">
+                    <div class="total-deaths">
+                        <p class="total-death-text total">total Death</p>
+                        <p class="total-death-number total" id="total-death-number">21312</p>
+                        <p class="total-death-percent total" id="total-death-number-percent">45%</p>
+
+                    </div>
+                    <div class="total-recovered">
+                        <p class="total-recovered-text total">total recovered</p>
+                        <p class="total-recovered-number total" id="total-recovered-number">21312</p>
+                        <p class="total-recovered-number total" id="total-recovered-number-percent">45%</p>
+
+                    </div>
+                    <div class="total-active">
+                        <p class="total-active-text total">total Active</p>
+                        <p class="total-active-number total" id="total-active-number">21312</p>
+                        <p class="total-active-percent total" id="total-active-number-percent">45%</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="global-chart">
+                <canvas id="canvas-global-data"></canvas>
+            </div>
+        </section>
+        <section class="client-country">
+            <h3 class="client-country-text">Covid 19 status in Afghanistan</h3>
+            <div class="client-country"> <canvas id="canvas-client-country-data"></canvas></div>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr class="thead">
+
+                            <td>Confirmed</td>
+                            <td>Death</td>
+                            <td>Critical</td>
+                            <td>Recoverd</td>
+                            <td>Active</td>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                        <tr class="tr">
+                            <td>1826131</td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                        </tr>
+                        <tr class="tr">
+                            <td>1826131</td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        </section>
+        <section class="search">
+            <div class="search-box">
+                <input type="text" name="text" list="list" class="text-box" id="textBox" placeholder="enter the country name">
+                <datalist id="list">
           </datalist>
-          <button class="btn-search" id="btn-search">search</button>
-        </div>
-        <table class="table">
-          <thead>
-              <tr> 
-              <td>Country</td>
-              <td>Confirmed</td>
-              <td>Death</td>
-              <td>Recoverd</td>
-              </tr>
-          </thead>
-          <tbody class="tbody">
-              <!-- <tr>
-                  <td class="td">
-                     <p class="para"> afghanistan</p>
-                  </td>
-                  <td class="td">
-                    <p class="para">12133</p>
-                  </td>
-                  <td class="td">
-                    <p class="para">12&nbsp;<span class="badge badge-red">23%</span></p>
-                 </td>
-                 <td class="td">
-                    <p class="para">2312 	&nbsp;<span class="badge badge-green">23%</span></p>
-                 </td>
-              </tr> -->
-          </tbody>
-       </table>
-    </section>
-    <section class="countries">
-        <!-- country -->
-       <!-- <div class="country">
+                <button class="btn-search" id="btn-search">search</button>
+            </div>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr class="thead">
+                            <td>Country</td>
+                            <td>Confirmed</td>
+                            <td>Death</td>
+                            <td>Critical</td>
+                            <td>Recoverd</td>
+                            <td>Active</td>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody" id="search-tbody">
+                        <tr class="tr">
+                            <td>USA</td>
+                            <td>1826131</td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                        </tr>
+                        <tr class="tr">
+                            <td>AFghanistan</td>
+                            <td>1826131</td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                        </tr>
+                        <tr class="tr">
+                            <td>russia</td>
+                            <td>1826131</td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="top-ten-countries">
+            <h3>Top ten countries status</h3>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr class="thead">
+                            <td>Country</td>
+                            <td>Confirmed</td>
+                            <td>Death</td>
+                            <td>Critical</td>
+                            <td>Recoverd</td>
+                            <td>Active</td>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                        <tr class="tr">
+                            <td>USA</td>
+                            <td>1826131</td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                        </tr>
+                        <tr class="tr">
+                            <td>AFghanistan</td>
+                            <td>1826131</td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                        </tr>
+                        <tr class="tr">
+                            <td>russia</td>
+                            <td>1826131</td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="all-countries">
+            <h3>all countries</h3>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr class="thead">
+                            <td>Country</td>
+                            <td>Confirmed</td>
+                            <td>Death</td>
+                            <td>Critical</td>
+                            <td>recovered</td>
+                            <td>Active</td>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody" id="all-countries">
+                        <!-- <tr class="tr">
+                            <td>USA</td>
+                            <td>1826131</td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                        </tr>
+                        <tr class="tr">
+                            <td>AFghanistan</td>
+                            <td>1826131</td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span>78%</span></td>
+                        </tr> -->
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="countries">
+            <!-- country -->
+            <!-- <div class="country">
         <div class="country-control">
             <div class="country-name" >
         
@@ -114,11 +285,12 @@
              </div>
         </div>
     </div> -->
-  <!-- country -->
+            <!-- country -->
 
-    </section>
-</main>
-<footer></footer>
-<script src="app.js"></script>
+        </section>
+    </main>
+    <footer></footer>
+    <script src="app.js"></script>
 </body>
+
 </html>

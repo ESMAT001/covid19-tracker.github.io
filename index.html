@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -20,36 +20,12 @@
     <!-- chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-
+    <!-- 
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;500&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> -->
 
-    <style>
-        .loader {
-            width: 100%;
-            height: 100%;
-            z-index: 99;
-            background-color: #08aae1;
-            position: fixed;
-            top: 0;
-            left: 0;
-        }
-        
-        .svg {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        
-        .loader-text {
-            color: white;
-            position: fixed;
-            top: 43%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-    </style>
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
     <title>covid 19 tracker</title>
 </head>
 
@@ -82,9 +58,9 @@
         <section class=" global row my-3">
             <h3 class="col-12 mb-3 text-center font-weight-light">Global</h3>
             <div class="col-lg-6 col-12 p-0 row mx-auto">
-                <div class="total col-12 p-0 card mb-3 shadow rounded">
+                <div class="total col-12 p-0 card mb-3 shadow rounded card-total">
                     <div class="card-body">
-                        <p class="align-middle">total :<span id="global-total-case">56162561</span></p>
+                        <p class="align-middle text-center h3 font-weight-light global-total-text">total :<span id="global-total-case">56162561</span></p>
                     </div>
                 </div>
                 <div class="cases col-12 d-flex flex-column flex-md-row p-0 row mx-auto">
@@ -111,15 +87,17 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-12">
+            <div class="col-lg-6 col-12">
                 <canvas id="canvas-global-data"></canvas>
             </div>
 
         </section>
-        <section class="client-country row">
+        <section class="client-country row" id="client-country-data">
             <h3 class="col-12">your country</h3>
-            <canvas class="col-12" id="canvas-client-country-data">
-        </canvas>
+            <div class="col-12 col-md-10 mx-auto p-md-3 p-lg-5">
+                <canvas id="canvas-client-country-data">
+            </canvas>
+            </div>
 
             <div class="col-sm-12 col-md-8 col lg-6 mx-auto">
                 <div class="card shadow rounded">
@@ -241,21 +219,14 @@
                     </thead>
                     <tbody class="tbody" id="all-countries">
                         <tr class="tr">
-                            <td>23123</td>
-                            <td>1826131</td>
-                            <td>105877 <span class="badge badge-danger">34%</span></td>
-                            <td>105877 <span class="badge badge-danger">34%</span></td>
-                            <td>105877 <span class="badge badge-success">25%</span></td>
-                            <td>105877 <span class="badge badge-warning">67%</span></td>
+                            <td class="text-center align-middle">23123</td>
+                            <td class="text-center align-middle">1826131</td>
+                            <td class="text-center align-middle">105877 <span class="badge badge-danger">34%</span></td>
+                            <td class="text-center align-middle">105877 <span class="badge badge-danger">34%</span></td>
+                            <td class="text-center align-middle">105877 <span class="badge badge-success">25%</span></td>
+                            <td class="text-center align-middle">105877 <span class="badge badge-warning">67%</span></td>
                         </tr>
-                        <tr class="tr">
-                            <td>23123</td>
-                            <td>1826131</td>
-                            <td>105877 <span class="badge badge-danger">34%</span></td>
-                            <td>105877 <span class="badge badge-danger">34%</span></td>
-                            <td>105877 <span class="badge badge-success">25%</span></td>
-                            <td>105877 <span class="badge badge-warning">67%</span></td>
-                        </tr>
+
                     </tbody>
                 </table>
             </div>

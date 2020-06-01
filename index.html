@@ -4,28 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-
-    <!-- font -->
-    <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Kalam|Raleway&display=swap" rel="stylesheet">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&amp;display=swap" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-
-
-    <!-- jquery -->
+    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 
     <!-- chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-    <!-- css -->
-    <link rel="stylesheet" href="style.css">
-    <title>Covid 19</title>
+    <style>
+        .loader {
+            width: 100%;
+            height: 100%;
+            z-index: 99;
+            background-color: #08aae1;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        
+        .svg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .loader-text {
+            color: white;
+            position: fixed;
+            top: 43%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <title>covid 19 tracker</title>
 </head>
 
 <body>
@@ -42,254 +67,206 @@
            </svg>
     </div>
     <!-- /loader -->
-    <header>
-        <h2>corna virus tracker</h2>
+    <header class="container bg-primarycontainer p-3 bg-primary text-white">
+        <nav></nav>
     </header>
-    <main>
-        <section class="intro">
-            <h2>hi</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem placeat cum, optio voluptatibus accusamus itaque voluptates eveniet nihil, atque, quas ducimus! Repellendus atque impedit assumenda ea doloribus excepturi accusamus ratione!</p>
+    <main class="container-fluid p-5 ">
+        <section class="row">
+            <div class="col">
+                <h1 class="h2 font-weight-light">covid 19 tracker</h1>
+                <p class="font-weight-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis obcaecati nesciunt numquam ipsam dolorum. Natus nemo perferendis laboriosam quo qui, recusandae, quam veniam architecto placeat, doloribus laudantium ad inventore ipsum.</p>
+            </div>
+
         </section>
-        <h2 class="text-h2-global">Global</h2>
 
-        <section class="global-all">
-            <div class="global" id="global">
-                <div class="global-total">
-                    <p class="global-total-text total">Total cases : </p>
-                    <p class="global-total-number total" id="global-total-case">56765670</p>
+        <section class=" global row my-3">
+            <h3 class="col-12 mb-3 text-center font-weight-light">Global</h3>
+            <div class="col-lg-6 col-12 p-0 row mx-auto">
+                <div class="total col-12 p-0 card mb-3 shadow rounded">
+                    <div class="card-body">
+                        <p class="align-middle">total :<span id="global-total-case">56162561</span></p>
+                    </div>
                 </div>
-                <div class="global-cases">
-                    <div class="total-deaths">
-                        <p class="total-death-text total">total Death</p>
-                        <p class="total-death-number total" id="total-death-number">21312</p>
-                        <p class="total-death-percent total" id="total-death-number-percent">45%</p>
-
+                <div class="cases col-12 d-flex flex-column flex-md-row p-0 row mx-auto">
+                    <div class="death col border border-danger border-top-0 border-left-0 border-right-0  card mr-3 mb-3 shadow rounded">
+                        <div class="card-body">
+                            <p>death</p>
+                            <p id="total-death-number">3422342</p>
+                            <p id="total-death-number-percent">231%</p>
+                        </div>
                     </div>
-                    <div class="total-recovered">
-                        <p class="total-recovered-text total">total recovered</p>
-                        <p class="total-recovered-number total" id="total-recovered-number">21312</p>
-                        <p class="total-recovered-number total" id="total-recovered-number-percent">45%</p>
-
+                    <div class="recovered col  card mr-3 mb-3 shadow rounded">
+                        <div class="card-body">
+                            <p>recovered</p>
+                            <p id="total-recovered-number">3422342</p>
+                            <p id="total-recovered-number-percent">231%</p>
+                        </div>
                     </div>
-                    <div class="total-active">
-                        <p class="total-active-text total">total Active</p>
-                        <p class="total-active-number total" id="total-active-number">21312</p>
-                        <p class="total-active-percent total" id="total-active-number-percent">45%</p>
-
+                    <div class="active col card mb-3 shadow rounded">
+                        <div class="card-body">
+                            <p>active</p>
+                            <p id="total-active-number">3422342</p>
+                            <p id="total-active-number-percent">231%</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="global-chart">
+            <div class="col-md-6 col-12">
                 <canvas id="canvas-global-data"></canvas>
             </div>
-        </section>
-        <section class="client-country">
-            <h3 class="client-country-text">Covid 19 status in Afghanistan</h3>
-            <div class="client-country"> <canvas id="canvas-client-country-data"></canvas></div>
-            <div class="table-container">
-                <table class="table">
-                    <thead>
-                        <tr class="thead">
 
+        </section>
+        <section class="client-country row">
+            <h3 class="col-12">your country</h3>
+            <canvas class="col-12" id="canvas-client-country-data">
+        </canvas>
+
+            <div class="col-sm-12 col-md-8 col lg-6 mx-auto">
+                <div class="card shadow rounded">
+                    <div class="card-body">
+                        <p>afghanistan</p>
+                        <p>total 565261</p>
+                        <p>active 8822 <span class="badge badge-warning">23%</span></p>
+                        <p>death 93202 <span class="badge badge-danger">44%</span></p>
+                        <p>Recoverd 8328 <span class="badge badge-success">33%</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <canvas>
+
+                </canvas>
+            </div>
+        </section>
+        <section class="search row">
+            <div class="col-12 row mx-auto">
+                <div class="col-sm-12 col-md-6 mx-auto">
+                    <div class="input-group mb-3">
+                        <input type="text" id="textBox" list="list" class="form-control" placeholder="Search">
+                        <div class="input-group-append">
+                            <datalist id="list"></datalist>
+
+                            <button class="btn btn-success" type="submit" id="btn-search">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-8 col lg-6 mx-auto" id="search-card">
+                <!-- <div class="card shadow rounded">
+                    <div class="card-body" id="search-card-body">
+                        <p>afghanistan</p>
+                        <p>total 565261</p>
+                        <p>active 8822 <span class="badge badge-warning">23%</span></p>
+                        <p>death 93202 <span class="badge badge-danger">44%</span></p>
+                        <p>Recoverd 8328 <span class="badge badge-success">33%</span></p>
+                    </div>
+                </div> -->
+            </div>
+            <div class="col-12">
+                <canvas>
+
+                </canvas>
+            </div>
+        </section>
+        <section class="top-ten-countries row">
+            <h2 class="col-12 h3 font-weight-light text-center ">Top 8 countries</h2>
+            <div class="col row d-flex flex-lg-row flex-column mx-auto">
+                <div class="col mx-auto row d-flex flex-column flex-sm-column flex-md-row">
+
+                    <div class="col mb-3">
+                        <div class="card shadow rounded">
+                            <div class="card-body">
+                                <p>afghanistan</p>
+                                <p>total 565261</p>
+                                <p>active 8822 <span class="badge badge-warning">23%</span></p>
+                                <p>death 93202 <span class="badge badge-danger">44%</span></p>
+                                <p>Recoverd 8328 <span class="badge badge-success">33%</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <div class="card shadow rounded">
+                            <div class="card-body">
+                                <p>afghanistan</p>
+                                <p>total 565261</p>
+                                <p>active 8822 <span class="badge badge-warning">23%</span></p>
+                                <p>death 93202 <span class="badge badge-danger">44%</span></p>
+                                <p>Recoverd 8328 <span class="badge badge-success">33%</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col mx-auto row d-flex flex-column flex-sm-column flex-md-row">
+
+                    <div class="col mb-3">
+                        <div class="card shadow rounded">
+                            <div class="card-body">
+                                <p>afghanistan</p>
+                                <p>total 565261</p>
+                                <p>active 8822 <span class="badge badge-warning">23%</span></p>
+                                <p>death 93202 <span class="badge badge-danger">44%</span></p>
+                                <p>Recoverd 8328 <span class="badge badge-success">33%</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <div class="card shadow rounded">
+                            <div class="card-body">
+                                <p>afghanistan</p>
+                                <p>total 565261</p>
+                                <p>active 8822 <span class="badge badge-warning">23%</span></p>
+                                <p>death 93202 <span class="badge badge-danger">44%</span></p>
+                                <p>Recoverd 8328 <span class="badge badge-success">33%</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="all-countries row">
+            <h2 class="font-weight-light h3 col-12 text-center">All countries</h2>
+            <div class="col-12 table-responsive-md">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr class="">
+                            <td>client-country</td>
                             <td>Confirmed</td>
                             <td>Death</td>
                             <td>Critical</td>
                             <td>Recoverd</td>
-                            <td>Active</td>
-                        </tr>
-                    </thead>
-                    <tbody class="tbody">
-                        <tr class="tr">
-                            <td>1826131</td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                        </tr>
-                        <tr class="tr">
-                            <td>1826131</td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-        </section>
-        <section class="search">
-            <div class="search-box">
-                <input type="text" name="text" list="list" class="text-box" id="textBox" placeholder="enter the country name">
-                <datalist id="list">
-          </datalist>
-                <button class="btn-search" id="btn-search">search</button>
-            </div>
-            <div class="table-container">
-                <table class="table">
-                    <thead>
-                        <tr class="thead">
-                            <td>Country</td>
-                            <td>Confirmed</td>
-                            <td>Death</td>
-                            <td>Critical</td>
-                            <td>Recoverd</td>
-                            <td>Active</td>
-                        </tr>
-                    </thead>
-                    <tbody class="tbody" id="search-tbody">
-                        <tr class="tr">
-                            <td>USA</td>
-                            <td>1826131</td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                        </tr>
-                        <tr class="tr">
-                            <td>AFghanistan</td>
-                            <td>1826131</td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                        </tr>
-                        <tr class="tr">
-                            <td>russia</td>
-                            <td>1826131</td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-        <section class="top-ten-countries">
-            <h3>Top ten countries status</h3>
-            <div class="table-container">
-                <table class="table">
-                    <thead>
-                        <tr class="thead">
-                            <td>Country</td>
-                            <td>Confirmed</td>
-                            <td>Death</td>
-                            <td>Critical</td>
-                            <td>Recoverd</td>
-                            <td>Active</td>
-                        </tr>
-                    </thead>
-                    <tbody class="tbody">
-                        <tr class="tr">
-                            <td>USA</td>
-                            <td>1826131</td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                        </tr>
-                        <tr class="tr">
-                            <td>AFghanistan</td>
-                            <td>1826131</td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                        </tr>
-                        <tr class="tr">
-                            <td>russia</td>
-                            <td>1826131</td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-        <section class="all-countries">
-            <h3>all countries</h3>
-            <div class="table-container">
-                <table class="table">
-                    <thead>
-                        <tr class="thead">
-                            <td>Country</td>
-                            <td>Confirmed</td>
-                            <td>Death</td>
-                            <td>Critical</td>
-                            <td>recovered</td>
                             <td>Active</td>
                         </tr>
                     </thead>
                     <tbody class="tbody" id="all-countries">
-                        <!-- <tr class="tr">
-                            <td>USA</td>
+                        <tr class="tr">
+                            <td>23123</td>
                             <td>1826131</td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
+                            <td>105877 <span class="badge badge-danger">34%</span></td>
+                            <td>105877 <span class="badge badge-danger">34%</span></td>
+                            <td>105877 <span class="badge badge-success">25%</span></td>
+                            <td>105877 <span class="badge badge-warning">67%</span></td>
                         </tr>
                         <tr class="tr">
-                            <td>AFghanistan</td>
+                            <td>23123</td>
                             <td>1826131</td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                            <td>105877 <span>78%</span></td>
-                        </tr> -->
-
+                            <td>105877 <span class="badge badge-danger">34%</span></td>
+                            <td>105877 <span class="badge badge-danger">34%</span></td>
+                            <td>105877 <span class="badge badge-success">25%</span></td>
+                            <td>105877 <span class="badge badge-warning">67%</span></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <section class="countries">
-            <!-- country -->
-            <!-- <div class="country">
-        <div class="country-control">
-            <div class="country-name" >
-        
-                    <img class="flag-icon" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/az.svg" alt="country-flag" ><p>
-                      afghanistan
-                    </p>
-                
-            </div>
-            <button class="btn-x" target-tab="${countryCode}">
-                <span>x</span>
-            </button>
-        </div>
-        <div class="country-info" id="${countryCode}">
-            <div class="country-info-para">
-                <div class="active country-info-para-date">
-                    <p class=>confirmed :</p>
-                    <p class="">${totalConfirmed}</p>
-                </div>
-                <div class="active country-info-para-date">
-                <p class=>active :</p>
-                <p class="yellowText">23</p>
-                <p class="yellowText">21%</p>
-            </div>
-                <div class="death country-info-para-date">
-                 <p class=>Death :</p>
-                 <p class="redText">22</p>
-                 <p class="redText">23%</p>
-                </div>
-               <div class="recoverd country-info-para-date">
-                 <p class=>Recoverd :</p>
-                 <p class="greenText">56</p>
-                 <p class="greenText">12%</p>
-               </div>
-             </div>
-        </div>
-    </div> -->
-            <!-- country -->
-
-        </section>
     </main>
-    <footer></footer>
+    <footer class="container bg-primarycontainer p-3  bg-primary text-white">
+
+    </footer>
+
+
     <script src="app.js"></script>
 </body>
 

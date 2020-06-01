@@ -1,6 +1,6 @@
 $(document).ready(() => {
 
-
+    getData();
     //ajax start////////
     async function getData() { //https://api.coronatracker.com/v3/stats/worldometer/country
         try {
@@ -10,11 +10,12 @@ $(document).ready(() => {
             if (data.status == 200) {
                 console.log("yesss");
                 data = await data.json();
-                console.log(data);
+                // console.log(data);
                 insert(data);
                 search(data);
-                $(".loader").fadeOut(800);
+
                 getGlobalData();
+                $(".loader").fadeOut(800);
             } else {
                 console.log("NOo")
                 getData();
@@ -38,15 +39,22 @@ $(document).ready(() => {
                 let critical = data[i].totalCritical;
                 let recovered = data[i].totalRecovered;
                 let active = data[i].activeCases;
-                let html = ` <tr class="tr">
-                <td>${country}</td>
-                <td>${total}</td>
-                <td>${death} <span>${getPercent(total,death)}%</span></td>
-                <td>${critical} <span>${getPercent(active,critical)}%</span></td>
-                <td>${recovered} <span>${getPercent(total,recovered)}%</span></td>
-                <td>${active} <span>${getPercent(total,active)}%</span></td>
-               </tr>`
-
+                //     let html = ` <tr class="tr">
+                //     <td>${country}</td>
+                //     <td>${total}</td>
+                //     <td>${death} <span>${getPercent(total,death)}%</span></td>
+                //     <td>${critical} <span>${getPercent(active,critical)}%</span></td>
+                //     <td>${recovered} <span>${getPercent(total,recovered)}%</span></td>
+                //     <td>${active} <span>${getPercent(total,active)}%</span></td>
+                //    </tr>`
+                let html = `<tr class="tr">
+              <td>${country}</td>
+              <td>${total}</td>
+              <td>${death} <span class="badge badge-danger">${getPercent(total,death)}%</span></td>
+              <td>${critical} <span class="badge badge-danger">${getPercent(active,critical)}%</span></td>
+              <td>${recovered} <span class="badge badge-success">${getPercent(total,recovered)}%</span></td>
+              <td>${active} <span class="badge badge-warning">${getPercent(total,active)}%</span></td>
+          </tr>`
                 $("#all-countries").append(html);
             }
         }
@@ -61,7 +69,7 @@ $(document).ready(() => {
         }
         $("#list").append(datalist);
     }
-    getData();
+
 
     ////////ajax end/////
     //global data//
@@ -72,9 +80,7 @@ $(document).ready(() => {
                 console.log("yesss");
                 data = await data.json();
                 // console.log(data);
-                allData = data;
-                console.log(allData);
-                insertGlobalData(allData)
+                insertGlobalData(data)
                 if (true) {
                     insertClientCountryData("AF")
                 }
@@ -100,7 +106,7 @@ $(document).ready(() => {
         $("#total-recovered-number").text(recovered)
         $("#total-recovered-number-percent").text(getPercent(total, recovered) + "%")
         $("#total-active-number").text(active)
-        $("#total-active-number-percent").text(getPercent(total, active))
+        $("#total-active-number-percent").text(getPercent(total, active) + "%")
         createChartBar(total, death, recovered, active);
 
     }
@@ -122,10 +128,10 @@ $(document).ready(() => {
                     recoverd.push(data[i].total_recovered);
                     date.push(data[i].last_updated.slice(5, 10));
                 }
-                console.log(total);
-                console.log(death);
-                console.log(recoverd);
-                console.log(date);
+                // console.log(total);
+                // console.log(death);
+                // console.log(recoverd);
+                // console.log(date);
                 createCharLine(date, death, recoverd, total);
             } else {
                 console.log("NOo")
@@ -195,7 +201,9 @@ $(document).ready(() => {
                 }]
             },
             options: {
+                responsive: true,
                 legend: {
+                    display: false,
                     labels: {
                         // This more specific font property overrides the global property
                         fontColor: 'black',
@@ -203,14 +211,7 @@ $(document).ready(() => {
                         // fontSize: "20px"
                     }
                 },
-                layout: {
-                    padding: {
-                        left: 10,
-                        right: 10,
-                        top: 50,
-                        bottom: 0
-                    }
-                },
+
                 title: {
                     display: true,
                     text: 'Custom Chart Title',
@@ -278,14 +279,7 @@ $(document).ready(() => {
             },
             options: {
 
-                layout: {
-                    padding: {
-                        left: 10,
-                        right: 10,
-                        top: 50,
-                        bottom: 0
-                    }
-                },
+
                 title: {
                     display: true,
                     text: 'Custom Chart Title'
@@ -317,15 +311,17 @@ $(document).ready(() => {
                     let recovered = data[i].totalRecovered;
                     let active = data[i].activeCases;
                     console.log(country);
-                    let trow = ` <tr class="tr">
-            <td>${country}</td>
-            <td>${total}</td>
-            <td>${death} <span>${getPercent(total,death)}%</span></td>
-            <td>${critical} <span>${getPercent(active,critical)}%</span></td>
-            <td>${recovered} <span>${getPercent(total,recovered)}%</span></td>
-            <td>${active} <span>${getPercent(total,active)}%</span></td>
-           </tr>`;
-                    $("#search-tbody").append(trow);
+
+                    let card = `<div class="card shadow rounded">
+                    <div class="card-body" id="search-card-body">
+                    <p>${country}</p>
+                    <p>total : ${total}</p>
+                    <p>active ${active} <span class="badge badge-warning">${getPercent(total,active)}%</span></p>
+                    <p>death ${death} <span class="badge badge-danger">${getPercent(total,death)}%</span></p>
+                    <p>Recoverd ${recovered} <span class="badge badge-success">${getPercent(total,recovered)}%</span></p>
+                      </div>
+                     </div>`;
+                    $("#search-card").append(card);
                 }
             }
         })

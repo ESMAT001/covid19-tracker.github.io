@@ -16,7 +16,13 @@ window.addEventListener("resize", () => {
 })
 
 $(document).ready(() => {
+    var state = {
+        'querySet': undefined,
+        'page': 1,
+        'rows': 10,
+        'window': 3
 
+    }
     getData();
     //ajax start////////
     async function getData() {
@@ -27,12 +33,14 @@ $(document).ready(() => {
             if (data.status == 200) {
                 console.log("yesss");
                 data = await data.json();
-                console.log(data);
-                insert(data);
-                search(data);
-
+                state.querySet = data;
                 getGlobalData();
+                console.log(data);
+                insert();
+                search(data);
                 getLocationAndInsertIt(data);
+                topTenCountries();
+
 
             } else {
                 console.log("NOo")
@@ -46,7 +54,9 @@ $(document).ready(() => {
 
     }
 
-    function insert(data) {
+    function insert() {
+        let newData = pagination(state.querySet, state.page, state.rows);
+        let data = newData.querySet;
         for (let i = 0; i < data.length; i++) {
             if (data[i].countryCode == null) {
                 continue;
@@ -68,7 +78,9 @@ $(document).ready(() => {
           </tr>`
                 $("#all-countries").append(html);
             }
+
         }
+        paginationBtns(newData.pages, state.page);
         //datalist part
         var datalist = "";
         for (let i = 0; i < data.length; i++) {
@@ -83,6 +95,126 @@ $(document).ready(() => {
 
 
     ////////ajax end/////
+    //top ten countries//
+    async function topTenCountries() {
+
+        try {
+            let data = await fetch("https://api.coronatracker.com/v3/stats/worldometer/topCountry?limit=8&sort=-confirmed");
+            data = await data.json();
+
+            for (let i = 0; i < data.length; i += 2) {
+                let html = `<div class="col mx-auto row d-flex flex-column flex-sm-column flex-md-row">
+
+                <div class="col mb-3">
+                    <div class="card shadow rounded">
+                    <div class="card-body">
+                    <p>${data[i].country}</p>
+                    <p>total ${data[i].totalConfirmed}</p>
+                    <p>active ${data[i].activeCases} <span class="badge badge-warning">${getPercent(data[i].totalConfirmed,data[i].activeCases)}%</span></p>
+                    <p>death  ${data[i].totalDeaths}  <span class="badge badge-danger">${getPercent(data[i].totalConfirmed,data[i].totalDeaths)}%</span></p>
+                    <p>Recoverd ${data[i].totalRecovered}  <span class="badge badge-success">${getPercent(data[i].totalConfirmed,data[i].totalRecovered)}%</span></p>
+                </div>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="card shadow rounded">
+                    <div class="card-body">
+                    <p>${data[i+1].country}</p>
+                    <p>total ${data[i+1].totalConfirmed}</p>
+                    <p>active ${data[i+1].activeCases} <span class="badge badge-warning">${getPercent(data[i+1].totalConfirmed,data[i+1].activeCases)}%</span></p>
+                    <p>death  ${data[i+1].totalDeaths}  <span class="badge badge-danger">${getPercent(data[i+1].totalConfirmed,data[i+1].totalDeaths)}%</span></p>
+                    <p>Recoverd ${data[i+1].totalRecovered}  <span class="badge badge-success">${getPercent(data[i+1].totalConfirmed,data[i+1].totalRecovered)}%</span></p>
+                </div>
+                    </div>
+                </div>
+                
+                </div>`
+                $("#top-ten").append(html)
+            }
+            console.log(data);
+        } catch (error) {
+            console.log(error)
+        }
+
+
+
+
+
+
+
+    };
+
+
+
+    ////////////////////
+    //pagination///
+    function pagination(querySet, page, rows) {
+        var start = (page - 1) * rows;
+        var end = start + rows;
+
+        var trimedData = querySet.slice(start, end);
+        var pages = Math.ceil(querySet.length / rows);
+        return {
+            'querySet': trimedData,
+            'pages': pages
+        }
+    }
+
+    function paginationBtns(pages, currentPage) {
+        console.log("hellooooo")
+        let tbl = $("#all-countries");
+        // var ul = $("#pagination-ul");
+        let ul = document.getElementById("pagination-ul")
+
+        let maxLeft = (state.page - Math.floor(state.window / 2));
+        let maxRight = (state.page + Math.floor(state.window / 2));
+
+        if (maxLeft < 1) {
+            maxLeft = 1;
+            maxRight = state.window
+        }
+        if (maxRight > pages) {
+            maxLeft = pages - (state.window - 1);
+            maxRight = pages;
+            if (maxLeft < 1) {
+                maxLeft = 1;
+            }
+        }
+        for (var i = maxLeft; i <= maxRight; i++) {
+            if (i == currentPage) {
+                ul.innerHTML += ` <li class="page-item btn-page active" ><button class="page-link" data-page="${i}">${i}</button></li>`;
+            } else {
+                ul.innerHTML += ` <li class="page-item btn-page" ><button class="page-link" href="" data-page="${i}">${i}</button></li>`;
+            }
+
+        }
+
+        if (state.page != 1) {
+            ul.innerHTML = ` <li class="page-item btn-page" ><button class="page-link"  data-page="1">first</button></li>` + ul.innerHTML;
+        }
+
+        if (state.page != pages) {
+            ul.innerHTML += ` <li class="page-item btn-page" ><button class="page-link" href="" data-page="${pages}">last</button></li>`
+        }
+
+
+        $(".btn-page").click((e) => {
+            // ulu.fadeOut(100);
+            ul.innerHTML = "";
+            tbl.empty();
+            state.page = parseInt(e.target.getAttribute("data-page"));
+            // console.log(state.page)
+            // console.log(e.target)
+            insert();
+        })
+    }
+
+
+    // pagination end
+
+
+
+
     //geolocation//
 
     function getLocationAndInsertIt(data) {
@@ -188,10 +320,6 @@ $(document).ready(() => {
                     recoverd.push(data[i].total_recovered);
                     date.push(data[i].last_updated.slice(5, 10));
                 }
-                // console.log(total);
-                // console.log(death);
-                // console.log(recoverd);
-                // console.log(date);
                 createCharLine(date, death, recoverd, total);
             } else {
                 console.log("NOoClient")

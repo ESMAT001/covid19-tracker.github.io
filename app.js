@@ -103,7 +103,7 @@ $(document).ready(() => {
             data = await data.json();
 
             for (let i = 0; i < data.length; i += 2) {
-                let html = `<div class="col mx-auto row d-flex flex-column flex-sm-column flex-md-row">
+                let html = `<div class="col col-lg-6 mx-auto row d-flex flex-column flex-sm-column flex-md-row">
 
                 <div class="col mb-3">
                     <div class="card shadow rounded">

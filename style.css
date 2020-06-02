@@ -1,3 +1,7 @@
+body {
+    background-color: white;
+}
+
 .loader {
     width: 100%;
     height: 100%;
@@ -23,8 +27,72 @@
     transform: translate(-50%, -50%);
 }
 
+.loader-search {
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background-color: #08aae1;
+}
+
+.svg-search {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .card-total {
     border-bottom: 5px solid #08aae1;
-    background-color: #08abe133;
-    color: blue;
+    background-color: rgba(8, 171, 225, 0.15);
+    color: #009bcf;
+}
+
+.card-death {
+    border-bottom: 5px solid #d50000;
+    background-color: rgba(211, 47, 47, 0.15);
+    color: #d50000;
+}
+
+.card-recovered {
+    border-bottom: 5px solid #64dd17;
+    background-color: rgba(118, 255, 5, 0.15);
+    color: #00c853;
+}
+
+.card-active {
+    border-bottom: 5px solid #ffc400;
+    background-color: rgba(255, 234, 0, 0.15);
+    color: #ffab00;
+}
+
+.table-total {
+    background-color: rgba(8, 171, 225, 0.15);
+    color: #009bcf;
+}
+
+.table-death {
+    background-color: rgba(211, 47, 47, 0.15);
+    color: #d50000;
+}
+
+.table-recovered {
+    background-color: rgba(118, 255, 5, 0.15);
+    color: #00c853;
+}
+
+.table-active {
+    background-color: rgba(255, 234, 0, 0.15);
+    color: #ffab00;
+}
+
+p,
+td {
+    font-size: 1.4rem;
+}
+
+@media (max-width:540px) {
+    p,
+    td {
+        font-size: 1.2rem;
+    }
 }

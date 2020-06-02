@@ -46,43 +46,46 @@
     <header class="container bg-primarycontainer p-3 bg-primary text-white">
         <nav></nav>
     </header>
-    <main class="container-fluid p-5 ">
+    <main class="container-fluid px-5 py-3">
         <section class="row">
-            <div class="col">
-                <h1 class="h2 font-weight-light">covid 19 tracker</h1>
-                <p class="font-weight-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis obcaecati nesciunt numquam ipsam dolorum. Natus nemo perferendis laboriosam quo qui, recusandae, quam veniam architecto placeat, doloribus laudantium ad inventore ipsum.</p>
+            <div class="col-md-10 col-12 mx-auto my-3 p-3">
+                <h1 class="h1 font-weight-light">covid 19 tracker</h1>
+                <p class="font-weight-light ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis obcaecati nesciunt numquam ipsam dolorum. Natus nemo perferendis laboriosam quo qui, recusandae, quam veniam architecto placeat, doloribus laudantium ad inventore ipsum.</p>
             </div>
 
-        </section>
 
-        <section class=" global row my-3">
-            <h3 class="col-12 mb-3 text-center font-weight-light">Global</h3>
+        </section>
+        <div class="row ">
+            <hr class="col-10 col-md-8 col-lg-6 mx-auto">
+        </div>
+        <section class=" global row my-4">
+            <h3 class="col-12 mb-5 h2 text-center font-weight-light">Global</h3>
             <div class="col-lg-6 col-12 p-0 row mx-auto">
                 <div class="total col-12 p-0 card mb-3 shadow rounded card-total">
-                    <div class="card-body">
-                        <p class="align-middle text-center h3 font-weight-light global-total-text">total :<span id="global-total-case">56162561</span></p>
+                    <div class="card-body d-flex flex-column justify-content-center">
+                        <h3 class="align-middle text-center h3 font-weight-light global-total-text">Total Confirmed: <span id="global-total-case">56162561</span></h3>
                     </div>
                 </div>
                 <div class="cases col-12 d-flex flex-column flex-md-row p-0 row mx-auto">
-                    <div class="death col border border-danger border-top-0 border-left-0 border-right-0  card mr-3 mb-3 shadow rounded">
-                        <div class="card-body">
-                            <p>death</p>
-                            <p id="total-death-number">3422342</p>
-                            <p id="total-death-number-percent">231%</p>
+                    <div class="death col  card mr-3 mb-3 shadow rounded card-death">
+                        <div class="card-body text-center d-flex flex-column justify-content-center">
+                            <h3 class="h3 font-weight-light">Death</h3>
+                            <h3 class="h4 font-weight-light" id="total-death-number">3422342</h3>
+                            <h3 class="h4 font-weight-light" id="total-death-number-percent">231%</h3>
                         </div>
                     </div>
-                    <div class="recovered col  card mr-3 mb-3 shadow rounded">
-                        <div class="card-body">
-                            <p>recovered</p>
-                            <p id="total-recovered-number">3422342</p>
-                            <p id="total-recovered-number-percent">231%</p>
+                    <div class="recovered col  card mr-3 mb-3 shadow rounded card-recovered">
+                        <div class="card-body text-center d-flex flex-column justify-content-center">
+                            <h3 class="h3 font-weight-light">Recovered</h3>
+                            <h3 class="h4 font-weight-light" id="total-recovered-number">3422342</h3>
+                            <h3 class="h4 font-weight-light" id="total-recovered-number-percent"><span class="badge badge-success">33%</span></h3>
                         </div>
                     </div>
-                    <div class="active col card mb-3 shadow rounded">
-                        <div class="card-body">
-                            <p>active</p>
-                            <p id="total-active-number">3422342</p>
-                            <p id="total-active-number-percent">231%</p>
+                    <div class="active col card mb-3 shadow rounded card-active">
+                        <div class="card-body text-center d-flex flex-column justify-content-center">
+                            <h3 class="h3 font-weight-light">Active</h3>
+                            <h3 class="h4 font-weight-light" id="total-active-number">3422342</h3>
+                            <h3 class="h4 font-weight-light" id="total-active-number-percent">231%</h3>
                         </div>
                     </div>
                 </div>
@@ -90,36 +93,56 @@
             <div class="col-lg-6 col-12">
                 <canvas id="canvas-global-data"></canvas>
             </div>
-
+            <div class="col-md-10 col-12 mx-auto my-5 p-3">
+                <h2 class="h4 font-weight-light">About this data</h2>
+                <p class="font-weight-light">
+                    It changes rapidly This data changes rapidly and might not reflect some cases still being reported.
+                </p>
+                <p class="font-weight-light">
+                    It only includes people tested Cases only include people who were tested and confirmed positive. Testing rules and availability vary by country. Some areas may not have data because they haven’t published their data or haven’t done so recently.
+                </p>
+                <p class="font-weight-light">
+                    <span class=" font-weight-normal">
+                        Why do I see different data from different sources?
+                    </span> <br> There are various sources that are tracking and aggregating coronavirus data. They update at different times and may have different ways of gathering data.
+                </p>
+            </div>
         </section>
-        <section class="client-country row" id="client-country-data">
-            <h3 class="col-12">your country</h3>
-            <div class="col-12 col-md-10 mx-auto p-md-3 p-lg-5">
+        <div class="row ">
+            <hr class="col-10 col-md-8 col-lg-6 mx-auto">
+        </div>
+        <section class="client-country row my-5" id="client-country-data">
+            <!-- <h3 class="col-12 text-center h3 font-weight-light mt-sm-3 mt-lg-5 mb-0">your country</h3> -->
+
+            <div class="col-sm-12 col-md-8 col-lg-4 mx-auto mb-5 client-country-card">
+                <!-- <div class="card shadow rounded">
+                    <div class="card-body text-center">
+                        <p class="h3 font-weight-light">afghanistan</p>
+                        <p class="h4 font-weight-light text-info">total 565261</p>
+                        <p class="h4 font-weight-light text-warning">active 8822 <span class="badge badge-warning">23%</span></p>
+                        <p class="h4 font-weight-light text-danger">death 93202 <span class="badge badge-danger">44%</span></p>
+                        <p class="h4 font-weight-light  text-success">Recoverd 8328 <span class="badge badge-success">33%</span></p>
+                    </div>
+                </div> -->
+            </div>
+            <div class="col-12 col-md-10 mx-auto px-md-3 px-lg-5">
                 <canvas id="canvas-client-country-data">
             </canvas>
             </div>
 
-            <div class="col-sm-12 col-md-8 col lg-6 mx-auto">
-                <div class="card shadow rounded">
-                    <div class="card-body">
-                        <p>afghanistan</p>
-                        <p>total 565261</p>
-                        <p>active 8822 <span class="badge badge-warning">23%</span></p>
-                        <p>death 93202 <span class="badge badge-danger">44%</span></p>
-                        <p>Recoverd 8328 <span class="badge badge-success">33%</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
+            <!-- <div class="col-12">
                 <canvas>
 
                 </canvas>
-            </div>
+            </div> -->
         </section>
-        <section class="search row">
+        <div class="row ">
+            <hr class="col-10 col-md-8 col-lg-6 mx-auto">
+        </div>
+        <section class="search row my-5">
             <div class="col-12 row mx-auto">
                 <div class="col-sm-12 col-md-6 mx-auto">
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3 input-group-lg">
                         <input type="text" id="textBox" list="list" class="form-control" placeholder="Search">
                         <div class="input-group-append">
                             <datalist id="list"></datalist>
@@ -129,7 +152,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-8 col lg-6 mx-auto" id="search-card">
+            <div class="col-sm-12 col-md-8 col lg-6 mx-auto my-5" id="search-card">
                 <!-- <div class="card shadow rounded">
                     <div class="card-body" id="search-card-body">
                         <p>afghanistan</p>
@@ -140,16 +163,29 @@
                     </div>
                 </div> -->
             </div>
-            <div class="col-12">
-                <canvas>
+            <div class="col-12 search-canvas">
+                <div class="loader-search">
+
+
+                    <svg class="svg-search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="10%" height="10%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                       <circle cx="50" cy="50" fill="none" stroke="#fff" stroke-width="3" r="37" stroke-dasharray="174.35839227423352 60.119464091411174" transform="rotate(83.2789 50 50)">
+                         <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.0416666666666665s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
+                       </circle>
+                       </svg>
+                </div>
+                <canvas id="search-canvas">
 
                 </canvas>
             </div>
         </section>
-        <section class="top-ten-countries row">
-            <h2 class="col-12 h3 font-weight-light text-center ">Top 8 countries</h2>
+        <div class="row">
+            <hr class="col-10 col-md-8 col-lg-6 mx-auto">
+        </div>
+        <section class="top-ten-countries row my-5">
+
+            <h2 class="col-12 h2 font-weight-light text-center  mb-5">Top 8 countries</h2>
             <div class="col row d-flex flex-lg-row flex-column mx-auto" id="top-ten">
-                <!-- <div class="col mx-auto row d-flex flex-column flex-sm-column flex-md-row">
+                <!-- <div class="col col-lg-6 mx-auto row d-flex flex-column flex-sm-column flex-md-row">
 
                     <div class="col mb-3">
                         <div class="card shadow rounded">
@@ -202,30 +238,35 @@
 
                 </div> -->
             </div>
+
         </section>
-        <section class="all-countries row">
+        <div class="row">
+            <hr class="col-10 col-md-8 col-lg-6 mx-auto">
+        </div>
+        <section class="all-countries row my-5">
             <h2 class="font-weight-light h3 col-12 text-center">All countries</h2>
             <div class="col-12 table-responsive-md">
-                <table class="table table-bordered">
-                    <thead class="thead-dark">
+                <table class="table ">
+                    <thead class="">
                         <tr class="">
-                            <td>client-country</td>
-                            <td>Confirmed</td>
-                            <td>Death</td>
-                            <td>Critical</td>
-                            <td>Recoverd</td>
-                            <td>Active</td>
+                            <td class="text-center text-white bg-info">Country</td>
+                            <td class="text-center text-white bg-primary">Confirmed</td>
+                            <td class="text-center text-white bg-danger">Death</td>
+
+                            <td class="text-center text-white bg-success">Recoverd</td>
+                            <td class="text-center text-white bg-warning">Active</td>
+                            <td class="text-center text-white bg-danger">Critical</td>
                         </tr>
                     </thead>
                     <tbody class="tbody" id="all-countries">
-                        <tr class="tr">
+                        <!-- <tr class="tr">
                             <td class="text-center align-middle">23123</td>
                             <td class="text-center align-middle">1826131</td>
                             <td class="text-center align-middle">105877 <span class="badge badge-danger">34%</span></td>
                             <td class="text-center align-middle">105877 <span class="badge badge-danger">34%</span></td>
                             <td class="text-center align-middle">105877 <span class="badge badge-success">25%</span></td>
                             <td class="text-center align-middle">105877 <span class="badge badge-warning">67%</span></td>
-                        </tr>
+                        </tr> -->
 
                     </tbody>
                 </table>

@@ -70,11 +70,11 @@ $(document).ready(() => {
 
                 let html = `<tr class="tr">
               <td class="text-center align-middle">${country}</td>
-              <td class="text-center align-middle">${total}</td>
-              <td class="text-center align-middle">${death} <span class="badge badge-danger">${getPercent(total,death)}%</span></td>
-              <td class="text-center align-middle">${critical} <span class="badge badge-danger">${getPercent(active,critical)}%</span></td>
-              <td class="text-center align-middle">${recovered} <span class="badge badge-success">${getPercent(total,recovered)}%</span></td>
-              <td class="text-center align-middle">${active} <span class="badge badge-warning">${getPercent(total,active)}%</span></td>
+              <td class="text-center align-middle table-total">${total}</td>
+              <td class="text-center align-middle table-death">${death} <span class="badge badge-danger">${getPercent(total,death)}%</span></td>
+              <td class="text-center align-middle table-recovered">${recovered} <span class="badge badge-success">${getPercent(total,recovered)}%</span></td>
+              <td class="text-center align-middle table-active">${active} <span class="badge badge-warning text-white">${getPercent(total,active)}%</span></td>
+              <td class="text-center align-middle table-death">${critical} <span class="badge badge-danger">${getPercent(active,critical)}%</span></td>
           </tr>`
                 $("#all-countries").append(html);
             }
@@ -107,23 +107,23 @@ $(document).ready(() => {
 
                 <div class="col mb-3">
                     <div class="card shadow rounded">
-                    <div class="card-body">
-                    <p>${data[i].country}</p>
-                    <p>total ${data[i].totalConfirmed}</p>
-                    <p>active ${data[i].activeCases} <span class="badge badge-warning">${getPercent(data[i].totalConfirmed,data[i].activeCases)}%</span></p>
-                    <p>death  ${data[i].totalDeaths}  <span class="badge badge-danger">${getPercent(data[i].totalConfirmed,data[i].totalDeaths)}%</span></p>
-                    <p>Recoverd ${data[i].totalRecovered}  <span class="badge badge-success">${getPercent(data[i].totalConfirmed,data[i].totalRecovered)}%</span></p>
+                    <div class="card-body text-center">
+                    <p class="h3 font-weight-light">${data[i].country}</p>
+                    <p class="h4 font-weight-light text-primary">Total ${data[i].totalConfirmed}</p>
+                    <p class="h4 font-weight-light text-warning">Active ${data[i].activeCases} <span class="badge badge-warning">${getPercent(data[i].totalConfirmed,data[i].activeCases)}%</span></p>
+                    <p class="h4 font-weight-light text-danger">Death  ${data[i].totalDeaths} <span class="badge badge-danger">${getPercent(data[i].totalConfirmed,data[i].totalDeaths)}%</span></p>
+                    <p class="h4 font-weight-light text-success">Recoverd ${data[i].totalRecovered} <span class="badge badge-success">${getPercent(data[i].totalConfirmed,data[i].totalRecovered)}%</span></p>
                 </div>
                     </div>
                 </div>
                 <div class="col mb-3">
                     <div class="card shadow rounded">
-                    <div class="card-body">
-                    <p>${data[i+1].country}</p>
-                    <p>total ${data[i+1].totalConfirmed}</p>
-                    <p>active ${data[i+1].activeCases} <span class="badge badge-warning">${getPercent(data[i+1].totalConfirmed,data[i+1].activeCases)}%</span></p>
-                    <p>death  ${data[i+1].totalDeaths}  <span class="badge badge-danger">${getPercent(data[i+1].totalConfirmed,data[i+1].totalDeaths)}%</span></p>
-                    <p>Recoverd ${data[i+1].totalRecovered}  <span class="badge badge-success">${getPercent(data[i+1].totalConfirmed,data[i+1].totalRecovered)}%</span></p>
+                    <div class="card-body text-center">
+                    <p class="h3 font-weight-light">${data[i+1].country}</p>
+                    <p class="h4 font-weight-light text-primary">Total ${data[i+1].totalConfirmed}</p>
+                    <p class="h4 font-weight-light text-warning">Active ${data[i+1].activeCases} <span class="badge badge-warning">${getPercent(data[i+1].totalConfirmed,data[i+1].activeCases)}%</span></p>
+                    <p class="h4 font-weight-light text-danger">Death  ${data[i+1].totalDeaths} <span class="badge badge-danger">${getPercent(data[i+1].totalConfirmed,data[i+1].totalDeaths)}%</span></p>
+                    <p class="h4 font-weight-light text-success">Recoverd ${data[i+1].totalRecovered} <span class="badge badge-success">${getPercent(data[i+1].totalConfirmed,data[i+1].totalRecovered)}%</span></p>
                 </div>
                     </div>
                 </div>
@@ -225,6 +225,11 @@ $(document).ready(() => {
             let lng;
             let countryCode;
             navigator.geolocation.getCurrentPosition((alowRes) => {
+                let country;
+                let total;
+                let active;
+                let death;
+                let recoverd;
                 console.log("msg3")
                 let res;
                 lat = alowRes.coords.latitude.toFixed(2);
@@ -238,6 +243,11 @@ $(document).ready(() => {
                         let dataLng = data[i].lng.toFixed(2);
                         if (((lat + 4) >= dataLat && (lat - 4) <= dataLat) && (lng + 4) >= dataLng && (lng - 4) <= dataLng) {
                             countryCode = data[i].countryCode;
+                            country = data[i].country;
+                            total = data[i].totalConfirmed;
+                            active = data[i].activeCases;
+                            death = data[i].totalDeaths;
+                            recoverd = data[i].totalRecovered;
                             console.log("country")
                             res = true;
                         }
@@ -246,8 +256,19 @@ $(document).ready(() => {
                 }
                 console.log(countryCode)
                 if (res) {
-                    insertClientCountryData(countryCode);
-                    $(".loader").fadeOut(1000);
+                    $(".client-country-card").empty();
+                    let html = `<div class="card shadow rounded">
+                    <div class="card-body text-center">
+                        <p class="h3 font-weight-light">${country}</p>
+                        <p class="h4 font-weight-light text-primary">Total ${total}</p>
+                        <p class="h4 font-weight-light text-warning">Active ${active} <span class="badge badge-warning">${getPercent(total,active)}%</span></p>
+                        <p class="h4 font-weight-light text-danger">Death ${death} <span class="badge badge-danger">${getPercent(total,death)}%</span></p>
+                        <p class="h4 font-weight-light  text-success">Recoverd ${recoverd} <span class="badge badge-success">${getPercent(total,recoverd)}%</span></p>
+                    </div>
+                </div>`;
+                    $(".client-country-card").append(html);
+                    insertCountryDataChart(countryCode, 'canvas-client-country-data');
+                    $(".loader").fadeOut(600);
                 } else {
                     $("#client-country-data").hide();
                     $(".loader").fadeOut(800);
@@ -294,16 +315,16 @@ $(document).ready(() => {
         let active = allData.totalActiveCases;
         $("#global-total-case").text(total)
         $("#total-death-number").text(death)
-        $("#total-death-number-percent").text(getPercent(total, death) + "%")
+        $("#total-death-number-percent").html(`<span class="badge badge-danger">${getPercent(total, death) }%</span>`)
         $("#total-recovered-number").text(recovered)
-        $("#total-recovered-number-percent").text(getPercent(total, recovered) + "%")
+        $("#total-recovered-number-percent").html(`<span class="badge badge-success">${getPercent(total, recovered)}%</span>`)
         $("#total-active-number").text(active)
-        $("#total-active-number-percent").text(getPercent(total, active) + "%")
+        $("#total-active-number-percent").html(`<span class="badge badge-warning">${getPercent(total, active) }%</span>`)
         createChartBar(total, death, recovered, active);
 
     }
     //client country data
-    async function insertClientCountryData(countryCode) {
+    async function insertCountryDataChart(countryCode, canvas) {
         try {
             let data = await fetch(`https://api.coronatracker.com/v4/analytics/trend/country?countryCode=${countryCode}&startDate=2020-01-01&endDate=2020-09-01`);
             if (data.status == 200) {
@@ -320,7 +341,10 @@ $(document).ready(() => {
                     recoverd.push(data[i].total_recovered);
                     date.push(data[i].last_updated.slice(5, 10));
                 }
-                createCharLine(date, death, recoverd, total);
+                if (canvas == 'search-canvas') {
+                    $(".loader-search").fadeOut(600);
+                }
+                createCharLine(date, death, recoverd, total, canvas);
             } else {
                 console.log("NOoClient")
                 getData();
@@ -339,59 +363,60 @@ $(document).ready(() => {
             data: {
                 labels: [],
                 datasets: [{
-                    backgroundColor: "rgba(255,55,55,0)",
+
                     label: 'total',
                     data: [total],
                     backgroundColor: [
-                        "rgba(0, 0, 0, 0.692)"
+                        "rgba(0, 123, 255,0.7)"
                     ],
                     borderColor: [
-                        "rgba(0, 0, 0, 0.692)",
+                        "rgb(0, 123, 255)",
                     ],
                     borderWidth: 1,
                     order: 1
                 }, {
-                    backgroundColor: "rgba(255,55,55,0)",
+
                     label: 'death',
                     data: [death],
                     backgroundColor: [
-                        "rgba(255, 0, 0, 0.815)"
+                        "rgba(220, 53, 69,0.7)"
                     ],
                     borderColor: [
-                        "rgba(255, 0, 0, 0.815)"
-                    ],
-                    borderWidth: 1,
-                    order: 1
-                }, {
-                    backgroundColor: "rgba(255,55,55,0)",
-                    label: 'recoverd',
-                    data: [recoverd],
-                    backgroundColor: [
-                        "rgba(31, 247, 78, 0.815)"
-                    ],
-                    borderColor: [
-                        "rgba(31, 247, 78, 0.815)"
+                        "rgba(220, 53, 69,0.8)"
                     ],
                     borderWidth: 1,
                     order: 2
                 }, {
-                    backgroundColor: "rgba(255,55,55,0)",
+
+                    label: 'recoverd',
+                    data: [recoverd],
+                    backgroundColor: [
+                        "rgba(40, 167, 69,0.7)"
+                    ],
+                    borderColor: [
+                        "rgba(40, 167, 69,0.8)"
+                    ],
+                    borderWidth: 1,
+                    order: 3
+                }, {
+
                     label: 'active',
                     data: [active],
                     backgroundColor: [
-                        "rgba(243, 247, 31, 0.815)"
+                        "rgba(255, 193, 7,0.7)"
                     ],
                     borderColor: [
-                        "rgba(243, 247, 31, 0.815)"
+                        "rgba(255, 193, 7,0.8)"
                     ],
                     borderWidth: 1,
-                    order: 1
+                    order: 4
                 }]
             },
             options: {
                 responsive: true,
-
+                defaultFontSize: 22,
                 aspectRatio: aspectRatio,
+
                 legend: {
                     display: false,
                     labels: {
@@ -401,10 +426,10 @@ $(document).ready(() => {
                 },
 
                 title: {
-                    display: true,
-                    text: 'Custom Chart Title',
+                    display: false,
+                    text: 'World status',
                     fontFamily: 'Raleway',
-                    defaultFontSize: 20
+
                 },
                 animation: {
                     duration: 5000
@@ -421,9 +446,9 @@ $(document).ready(() => {
         })
     }
     //line chart
-    function createCharLine(date, death, recoverd, total) {
+    function createCharLine(date, death, recoverd, total, canvas) {
 
-        var ctx = document.getElementById('canvas-client-country-data').getContext('2d');
+        var ctx = document.getElementById(canvas).getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
@@ -433,10 +458,10 @@ $(document).ready(() => {
                     label: 'death',
                     data: death,
                     backgroundColor: [
-                        "rgba(255, 0, 0, 0.815)"
+                        "rgba(255, 0, 0, 0.87)"
                     ],
                     borderColor: [
-                        "rgba(255, 0, 0, 0.815)"
+                        "rgba(233, 10, 10, 0.87)"
                     ],
                     borderWidth: 1,
                     order: 1
@@ -445,10 +470,10 @@ $(document).ready(() => {
                     label: 'recoverd',
                     data: recoverd,
                     backgroundColor: [
-                        "rgba(31, 247, 78, 0.815)"
+                        "rgba(21, 212, 65, 0.88)"
                     ],
                     borderColor: [
-                        "rgba(31, 247, 78, 0.815)"
+                        "rgba(21, 212, 65, 0.7)"
                     ],
                     borderWidth: 1,
                     order: 2
@@ -457,10 +482,10 @@ $(document).ready(() => {
                     label: 'active',
                     data: total,
                     backgroundColor: [
-                        "rgba(243, 247, 31, 0.815)"
+                        "rgba(255, 238, 0, 0.8)"
                     ],
                     borderColor: [
-                        "rgba(243, 247, 31, 0.815)"
+                        "rgba(255, 238, 0, 0.84)"
                     ],
                     borderWidth: 1,
                     order: 1
@@ -471,7 +496,7 @@ $(document).ready(() => {
 
                 aspectRatio: aspectRatio,
                 title: {
-                    display: true,
+                    display: false,
                     text: 'Custom Chart Title'
                 },
                 animation: {
@@ -491,10 +516,14 @@ $(document).ready(() => {
     }
     //search start///
     function search(data) {
+        $(".search-canvas").hide();
         document.querySelector("#btn-search").addEventListener("click", () => {
+            $("#search-card").empty();
             let code = document.getElementById("textBox").value;
+            let condition = false;
             for (let i = 0; i < data.length; i++) {
                 if (code === data[i].countryCode) {
+                    condition = true;
                     let country = data[i].country;
                     let total = data[i].totalConfirmed;
                     let death = data[i].totalDeaths;
@@ -502,18 +531,23 @@ $(document).ready(() => {
                     let recovered = data[i].totalRecovered;
                     let active = data[i].activeCases;
                     console.log(country);
-
+                    $(".search-canvas").show();
+                    insertCountryDataChart(data[i].countryCode, 'search-canvas');
                     let card = `<div class="card shadow rounded">
-                    <div class="card-body" id="search-card-body">
-                    <p>${country}</p>
-                    <p>total : ${total}</p>
-                    <p>active ${active} <span class="badge badge-warning">${getPercent(total,active)}%</span></p>
-                    <p>death ${death} <span class="badge badge-danger">${getPercent(total,death)}%</span></p>
-                    <p>Recoverd ${recovered} <span class="badge badge-success">${getPercent(total,recovered)}%</span></p>
+                    <div class="card-body text-center mt-3" id="search-card-body">
+                    <p class="h3 font-weight-light">${country}</p>
+                    <p class="h4 font-weight-light text-primary">Total : ${total}</p>
+                    <p class="h4 font-weight-light text-warning">Active ${active} <span class="badge badge-warning">${getPercent(total,active)}%</span></p>
+                    <p class="h4 font-weight-light text-danger">Death ${death} <span class="badge badge-danger">${getPercent(total,death)}%</span></p>
+                    <p class="h4 font-weight-light text-success">Recoverd ${recovered} <span class="badge badge-success">${getPercent(total,recovered)}%</span></p>
                       </div>
                      </div>`;
                     $("#search-card").append(card);
                 }
+            }
+            if (!condition) {
+                $("#search-card").html('<p class="text-center font-weight-light text-danger">Sorry! country not found </p>');
+                $(".search-canvas").hide();
             }
         })
     }

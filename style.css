@@ -10,7 +10,8 @@ body {
     width: 100%;
     height: 100%;
     z-index: 99;
-    background-color: #08aae1;
+    /* background: #08aae1; */
+    background: linear-gradient(45deg, #c624fc, #1d6bfd);
     position: fixed;
     top: 0;
     left: 0;
@@ -24,6 +25,7 @@ body {
 }
 
 .loader-text {
+    margin-bottom: 15px;
     color: white;
     position: fixed;
     top: 43%;
@@ -31,11 +33,61 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.navBar {
+    width: 100%;
+    height: 100%;
+    z-index: 90;
+    background-color: #08aae1;
+    position: fixed;
+    top: 0;
+}
+
+.navBar-fade {
+    left: +100%;
+    transition: all 1s;
+}
+
+.navBar-apear {
+    left: 0;
+    transition: all 1s;
+}
+
+#navBtn {
+    z-index: 95;
+}
+
+.nav-ul {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+}
+
+.cov-img {
+    width: 3rem;
+}
+
+.a-cov {
+    position: absolute;
+    top: 20%;
+    left: 48%;
+    transform: translate(-50%, -20%);
+}
+
+.copyright {
+    position: absolute;
+    top: 97.5%;
+    /* left: 50%; */
+    transform: translateY(-95%);
+    color: rgba(255, 255, 255, 0.603);
+    text-align: center;
+}
+
 .loader-search {
     width: 100%;
     height: 100%;
     z-index: 99;
-    background-color: #08aae1;
+    background-color: white;
 }
 
 .svg-search {

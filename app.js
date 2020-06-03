@@ -81,6 +81,7 @@ $(document).ready(() => {
 
                 console.log(data);
                 insert();
+                dataList(data);
                 search(data);
                 getLocationAndInsertIt(data);
 
@@ -126,18 +127,20 @@ $(document).ready(() => {
         }
         paginationBtns(newData.pages, state.page);
         //datalist part
+
+    }
+
+    function dataList(data) {
         var datalist = "";
         for (let i = 0; i < data.length; i++) {
             if (data[i].countryCode == null) {
                 continue;
             } else {
-                datalist += `<option value="${data[i].countryCode}"> <img class="flag-icon" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${data[i].countryCode.toLowerCase()}.svg" alt="${data[i].country}-flag" >${data[i].country}</option>`
+                datalist += `<option value="${data[i].countryCode}">${data[i].country}</option>`
             }
         }
         $("#list").append(datalist);
     }
-
-
     ////////ajax end/////
     //top ten countries//
     async function topTenCountries() {

@@ -34,136 +34,168 @@
 </head>
 
 <body class="overflow" id="body">
-    <!-- loader -->
-    <div class="loader">
-        <h3 class="loader-text h3 font-weight-light">
-            loading
-        </h3>
+    <div class="root">
+        <!-- loader -->
+        <div class="loader">
+            <h3 class="loader-text h3 font-weight-light">
+                loading
+            </h3>
 
-        <svg class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="10%" height="10%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+            <svg class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="10%" height="10%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
            <circle cx="50" cy="50" fill="none" stroke="#fff" stroke-width="3" r="37" stroke-dasharray="174.35839227423352 60.119464091411174" transform="rotate(83.2789 50 50)">
              <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.0416666666666665s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
            </circle>
            </svg>
-    </div>
-    <!-- /loader -->
-    <header class="container-fluid px-0">
-        <div class="navBar navBar-fade" id="nav">
-            <a class="h4 a-cov font-weight-light text-white" href="#"> <img class="cov-img mx-auto" src="https://img.icons8.com/nolan/96/coronavirus.png" width="" />
-                <span class="">Cov-19 tracker</span></a>
-            <ul class="nav justify-content-center  flex-column nav-ul">
-
-                <li class="nav-item mx-auto mt-5">
-                    <a class="nav-link h4 font-weight-light text-white" href="#">Home</a>
-                </li>
-                <li class="nav-item mx-auto mt-3">
-                    <a class="nav-link h4 font-weight-light text-white" href="#">About</a>
-                </li>
-
-            </ul>
-            <p class="copyright h6 w-100 font-weight-light mx-auto"> &copy; COPYRIGHT 2020 ESMATULLAH NIAZI</p>
         </div>
-        <nav class="navbar navbar-expand-md px-lg-5 bg-light">
-            <!-- Brand -->
-            <a class="navbar-brand" href="#">
-                <!-- <img src="https://img.icons8.com/color/96/000000/coronavirus.png" /> -->
-                <img src="https://img.icons8.com/nolan/96/coronavirus.png" width="15%" />
-                <span>Cov-19 tracker</span>
-            </a>
+        <!-- /loader -->
+        <header class="container-fluid px-0">
+            <div class="navBar navBar-fade" id="nav">
+                <button class="btn-x">
+                    <span>
+                        <!-- <img class="img-x" src="https://img.icons8.com/ios/50/000000/delete-sign.png"/> -->
+                        <img class="img-x" src="https://img.icons8.com/fluent/48/000000/delete-sign.png"/>
+                    </span>
+                </button>
+                <a class="h4 a-cov font-weight-light " href="#"> <img class="cov-img mx-auto" src="https://img.icons8.com/nolan/96/coronavirus.png" width="" />
+                    <span class="">Cov-19 tracker</span></a>
+                <ul class="nav justify-content-center  flex-column nav-ul">
 
-            <!-- Toggler/collapsibe Button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" trgt="nav" id="navBtn">
-              <span ><img src="https://img.icons8.com/material/24/000000/menu--v1.png"/></span>
-            </button>
-
-            <!-- Navbar links -->
-            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                    <li class="nav-item mx-auto mt-5">
+                        <a class="nav-link h4 font-weight-light " href="#">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">source</a>
+                    <li class="nav-item mx-auto mt-3">
+                        <a class="nav-link h4 font-weight-light " href="#">About</a>
                     </li>
 
                 </ul>
+                <p class="copyright  w-100 font-weight-light mx-auto">Copyright © 2020 Esmatullah niazi </p>
             </div>
-        </nav>
-    </header>
-    <main class="container-fluid px-5 py-3">
-        <section class="row">
-            <div class="col-md-10 col-12 mx-auto my-3 p-3">
-                <h1 class="h1 font-weight-light">covid 19 tracker</h1>
-                <p class="font-weight-light ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis obcaecati nesciunt numquam ipsam dolorum. Natus nemo perferendis laboriosam quo qui, recusandae, quam veniam architecto placeat, doloribus laudantium ad inventore ipsum.</p>
-            </div>
-            <div class="col-md-10 col-12 mx-auto my-3 p-3">
-                <h1 class="h1 font-weight-light">covid 19 tracker</h1>
-                <p class="font-weight-light ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis obcaecati nesciunt numquam ipsam dolorum. Natus nemo perferendis laboriosam quo qui, recusandae, quam veniam architecto placeat, doloribus laudantium ad inventore ipsum.</p>
-            </div>
+            <nav class="navbar navbar-expand-md px-lg-5 ">
+                <!-- Brand -->
+                <a class="navbar-brand" href="#">
+                    <!-- <img src="https://img.icons8.com/color/96/000000/coronavirus.png" /> -->
+                    <img src="https://img.icons8.com/nolan/96/coronavirus.png" width="15%" />
+                    <span>Cov-19 tracker</span>
+                </a>
+
+                <!-- Toggler/collapsibe Button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" trgt="nav" id="navBtn">
+              <span >
+                  <!-- <img class="img-menu" src="https://img.icons8.com/ios/50/000000/menu.png"/> -->
+                  <svg class="img-menu" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+width="48" height="48"
+viewBox="0 0 226 226"
+style=" fill:#000000;"><defs><linearGradient x1="56.81075" y1="0.31075" x2="164.27846" y2="107.77846" gradientUnits="userSpaceOnUse" id="color-1_MmupZtPbnw66_gr1"><stop offset="0.237" stop-color="#c822ff"></stop><stop offset="0.85" stop-color="#1a6dff"></stop></linearGradient><linearGradient x1="56.81075" y1="56.81075" x2="164.27846" y2="164.27846" gradientUnits="userSpaceOnUse" id="color-2_MmupZtPbnw66_gr2"><stop offset="0.237" stop-color="#c822ff"></stop><stop offset="0.85" stop-color="#1a6dff"></stop></linearGradient><linearGradient x1="56.81075" y1="113.31075" x2="164.27846" y2="220.77846" gradientUnits="userSpaceOnUse" id="color-3_MmupZtPbnw66_gr3"><stop offset="0.237" stop-color="#c822ff"></stop><stop offset="0.85" stop-color="#1a6dff"></stop></linearGradient></defs><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,226v-226h226v226z" fill="none"></path><g><path d="M202.45833,70.625h-178.91667c-5.17917,0 -9.41667,-4.2375 -9.41667,-9.41667v-9.41667c0,-5.17917 4.2375,-9.41667 9.41667,-9.41667h178.91667c5.17917,0 9.41667,4.2375 9.41667,9.41667v9.41667c0,5.17917 -4.2375,9.41667 -9.41667,9.41667z" fill="url(#color-1_MmupZtPbnw66_gr1)"></path><path d="M202.45833,127.125h-178.91667c-5.17917,0 -9.41667,-4.2375 -9.41667,-9.41667v-9.41667c0,-5.17917 4.2375,-9.41667 9.41667,-9.41667h178.91667c5.17917,0 9.41667,4.2375 9.41667,9.41667v9.41667c0,5.17917 -4.2375,9.41667 -9.41667,9.41667z" fill="url(#color-2_MmupZtPbnw66_gr2)"></path><path d="M202.45833,183.625h-178.91667c-5.17917,0 -9.41667,-4.2375 -9.41667,-9.41667v-9.41667c0,-5.17917 4.2375,-9.41667 9.41667,-9.41667h178.91667c5.17917,0 9.41667,4.2375 9.41667,9.41667v9.41667c0,5.17917 -4.2375,9.41667 -9.41667,9.41667z" fill="url(#color-3_MmupZtPbnw66_gr3)"></path></g></g></svg>
+            </span>
+            </button>
+
+                <!-- Navbar links -->
+                <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">source</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main class="container-fluid px-5 py-3">
+            <section class="row">
+                <div class="col-md-10 col-12 mx-auto my-3 p-3">
+                    <h1 class="h1 font-weight-light">covid 19 tracker</h1>
+                    <p class="font-weight-light ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis obcaecati nesciunt numquam ipsam dolorum. Natus nemo perferendis laboriosam quo qui, recusandae, quam veniam architecto placeat, doloribus laudantium ad inventore ipsum.</p>
+                </div>
 
 
-        </section>
-        <div class="row ">
-            <hr class="col-10 col-md-8 col-lg-6 mx-auto">
-        </div>
-        <section class=" global row my-4 px-lg-5">
-            <h3 class="col-12 mb-5 h2 text-center font-weight-light">Global</h3>
-            <div class="col-lg-6 col-12 p-0 row mx-auto">
-                <div class="total col-12 p-0 card mb-3 shadow rounded card-total fade">
-                    <div class="card-body d-flex flex-column justify-content-center">
-                        <h3 class="align-middle text-center h3 font-weight-light global-total-text">Total Confirmed: <span id="global-total-case">56162561</span></h3>
+
+            </section>
+            <div class="row ">
+                <hr class="col-10 col-md-8 col-lg-6 mx-auto">
+            </div>
+            <section class=" global row my-4 px-lg-5">
+                <h3 class="col-12 mb-5 h2 text-center font-weight-light">Global</h3>
+                <div class="col-lg-6 col-12 p-0 row mx-auto">
+                    <div class="total col-12 p-0 card mb-3 shadow rounded card-total fade">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h3 class="align-middle text-center h3 font-weight-light global-total-text"><span>
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+width="64" height="64"
+viewBox="0 0 172 172"
+style=" fill:#000000;"><defs><linearGradient x1="77.9375" y1="33.45131" x2="77.9375" y2="130.95112" gradientUnits="userSpaceOnUse" id="color-1_3Tfh1tGyWiEj_gr1"><stop offset="0" stop-color="#70dfff"></stop><stop offset="1" stop-color="#70afff"></stop></linearGradient><linearGradient x1="86" y1="19.26938" x2="86" y2="155.59281" gradientUnits="userSpaceOnUse" id="color-2_3Tfh1tGyWiEj_gr2"><stop offset="0" stop-color="#00c6ff"></stop><stop offset="1" stop-color="#0072ff"></stop></linearGradient><linearGradient x1="86" y1="19.26938" x2="86" y2="155.59281" gradientUnits="userSpaceOnUse" id="color-3_3Tfh1tGyWiEj_gr3"><stop offset="0" stop-color="#00c6ff"></stop><stop offset="1" stop-color="#0072ff"></stop></linearGradient></defs><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g><path d="M118.13444,110.1875c-7.35569,0 -13.32194,-5.96356 -13.32194,-13.32462v-5.48788h-26.875l-13.4375,-2.6875v-18.8125l12.11525,-4.54188l1.32225,-11.58312l19.87406,-4.214l-1.06156,-17.286h-18.8125l-18.8125,5.375l-16.125,10.75l-10.75,26.875l19.79881,0.559l0.73369,10.191l10.51619,13.4375h14.63881v10.75c4.45319,0 8.0625,3.60931 8.0625,8.0625v23.50219l23.05875,-4.22475l14.56625,-11.21494v-16.125z" fill="url(#color-1_3Tfh1tGyWiEj_gr1)"></path><path d="M86,155.875c-38.528,0 -69.875,-31.34431 -69.875,-69.875c0,-38.53069 31.347,-69.875 69.875,-69.875c38.528,0 69.875,31.34431 69.875,69.875c0,38.53069 -31.347,69.875 -69.875,69.875zM86,21.5c-35.56369,0 -64.5,28.93631 -64.5,64.5c0,35.56369 28.93631,64.5 64.5,64.5c35.56369,0 64.5,-28.93631 64.5,-64.5c0,-35.56369 -28.93631,-64.5 -64.5,-64.5z" fill="#e4e4e4"></path><path d="M86,16.125c-38.528,0 -69.875,31.34431 -69.875,69.875c0,38.53069 31.347,69.875 69.875,69.875c38.528,0 69.875,-31.34431 69.875,-69.875c0,-38.53069 -31.347,-69.875 -69.875,-69.875zM86,150.5c-35.56369,0 -64.5,-28.93631 -64.5,-64.5c0,-35.56369 28.93631,-64.5 64.5,-64.5c35.56369,0 64.5,28.93631 64.5,64.5c0,35.56369 -28.93631,64.5 -64.5,64.5z" fill="url(#color-2_3Tfh1tGyWiEj_gr2)"></path><path d="M86,26.875c-32.60206,0 -59.125,26.52294 -59.125,59.125c0,32.60206 26.52294,59.125 59.125,59.125c32.60206,0 59.125,-26.52294 59.125,-59.125c0,-32.60206 -26.52294,-59.125 -59.125,-59.125zM86,32.25c3.698,0 7.30731,0.37625 10.79569,1.09112c-0.00806,0.07794 -0.04569,0.14513 -0.04569,0.22575v12.12062c0,1.4835 -1.20669,2.6875 -2.6875,2.6875h-10.75c-4.44513,0 -8.0625,3.61738 -8.0625,8.0625v5.375c0,1.4835 -1.20669,2.6875 -2.6875,2.6875h-2.6875c-4.44513,0 -8.0625,3.61737 -8.0625,8.0625v10.75c0,4.44512 3.61737,8.0625 8.0625,8.0625h32.25c1.48081,0 2.6875,1.204 2.6875,2.6875v8.0625c0,4.44512 3.61738,8.0625 8.0625,8.0625h5.375c1.48081,0 2.6875,1.204 2.6875,2.6875v13.889c-8.76663,7.525 -19.96812,12.23888 -32.25,12.85162v-21.36562c0,-4.44512 -3.61737,-8.0625 -8.0625,-8.0625c-1.48081,0 -2.6875,-1.204 -2.6875,-2.6875v-8.0625c0,-1.48619 -1.204,-2.6875 -2.6875,-2.6875h-8.0625c-5.92862,0 -10.75,-4.82137 -10.75,-10.75v-5.375c0,-4.44513 -3.61738,-8.0625 -8.0625,-8.0625h-14.35662c5.99044,-23.14475 26.99056,-40.3125 51.98162,-40.3125zM32.25,86c0,-2.74662 0.27144,-5.42606 0.67188,-8.0625h15.45313c1.48081,0 2.6875,1.204 2.6875,2.6875v5.375c0,8.89294 7.23206,16.125 16.125,16.125h5.375v5.375c0,4.44512 3.61737,8.0625 8.0625,8.0625c1.48081,0 2.6875,1.204 2.6875,2.6875v21.36294c-28.38538,-1.41362 -51.0625,-24.88087 -51.0625,-53.61294zM126.3125,121.43469v-8.55969c0,-4.44512 -3.61738,-8.0625 -8.0625,-8.0625h-5.375c-1.48081,0 -2.6875,-1.204 -2.6875,-2.6875v-8.0625c0,-4.44512 -3.61738,-8.0625 -8.0625,-8.0625h-32.25c-1.48081,0 -2.6875,-1.204 -2.6875,-2.6875v-10.75c0,-1.4835 1.20669,-2.6875 2.6875,-2.6875h2.6875c4.44513,0 8.0625,-3.61737 8.0625,-8.0625v-5.375c0,-1.4835 1.20669,-2.6875 2.6875,-2.6875h10.75c4.44512,0 8.0625,-3.61738 8.0625,-8.0625v-10.95962c21.78219,6.86656 37.625,27.25125 37.625,51.27213c0,13.57994 -5.10088,25.96125 -13.4375,35.43469z" fill="url(#color-3_3Tfh1tGyWiEj_gr3)"></path></g></g></svg>
+                            </span> Total Confirmed: <span id="global-total-case">56162561</span></h3>
+                        </div>
+                    </div>
+                    <div class="cases col-12 d-flex flex-column flex-md-row p-0 row mx-auto">
+                        <div class="death col  card mr-3 mb-3 shadow rounded card-death fade">
+                            <div class="card-body text-center d-flex flex-column justify-content-center">
+                                <h3 class="h4 font-weight-light">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+width="64" height="64"
+viewBox="0 0 172 172"
+style=" fill:#000000;"><defs><linearGradient x1="102.125" y1="69.359" x2="102.125" y2="96.61294" gradientUnits="userSpaceOnUse" id="color-1_9__1GgT5ZSuW_gr1"><stop offset="0" stop-color="#ff8070"></stop><stop offset="1" stop-color="#f80505"></stop></linearGradient><linearGradient x1="86" y1="69.359" x2="86" y2="96.61294" gradientUnits="userSpaceOnUse" id="color-2_9__1GgT5ZSuW_gr2"><stop offset="0" stop-color="#ff8070"></stop><stop offset="1" stop-color="#f80505"></stop></linearGradient><linearGradient x1="69.875" y1="69.359" x2="69.875" y2="96.61294" gradientUnits="userSpaceOnUse" id="color-3_9__1GgT5ZSuW_gr3"><stop offset="0" stop-color="#ff8070"></stop><stop offset="1" stop-color="#f80505"></stop></linearGradient><linearGradient x1="86" y1="15.61169" x2="86" y2="159.04625" gradientUnits="userSpaceOnUse" id="color-4_9__1GgT5ZSuW_gr4"><stop offset="0" stop-color="#ff1d00"></stop><stop offset="1" stop-color="#8a0303"></stop></linearGradient><linearGradient x1="104.8125" y1="15.61169" x2="104.8125" y2="159.04625" gradientUnits="userSpaceOnUse" id="color-5_9__1GgT5ZSuW_gr5"><stop offset="0" stop-color="#ff1d00"></stop><stop offset="1" stop-color="#8a0303"></stop></linearGradient></defs><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g><path d="M98.09375,96.75h-2.6875c-0.74175,0 -1.34375,-0.602 -1.34375,-1.34375v-20.15625c0,-2.96969 2.40531,-5.375 5.375,-5.375h5.375c2.96969,0 5.375,2.40531 5.375,5.375v8.0625c0,2.96969 -2.40531,5.375 -5.375,5.375h-5.375v6.71875c0,0.74175 -0.602,1.34375 -1.34375,1.34375zM100.78125,83.3125h2.6875c0.74175,0 1.34375,-0.602 1.34375,-1.34375v-5.375c0,-0.74175 -0.602,-1.34375 -1.34375,-1.34375h-2.6875c-0.74175,0 -1.34375,0.602 -1.34375,1.34375v5.375c0,0.74175 0.602,1.34375 1.34375,1.34375z" fill="url(#color-1_9__1GgT5ZSuW_gr1)"></path><path d="M83.3125,71.21875v24.1875c0,0.74175 0.602,1.34375 1.34375,1.34375h2.6875c0.74175,0 1.34375,-0.602 1.34375,-1.34375v-24.1875c0,-0.74175 -0.602,-1.34375 -1.34375,-1.34375h-2.6875c-0.74175,0 -1.34375,0.602 -1.34375,1.34375z" fill="url(#color-2_9__1GgT5ZSuW_gr2)"></path><g fill="url(#color-3_9__1GgT5ZSuW_gr3)"><path d="M77.9375,83.3125v-8.0625c0,-2.96969 -2.40531,-5.375 -5.375,-5.375h-5.375c-2.96969,0 -5.375,2.40531 -5.375,5.375v20.15625c0,0.74175 0.602,1.34375 1.34375,1.34375h2.6875c0.74175,0 1.34375,-0.602 1.34375,-1.34375v-6.71875h1.54531l3.67113,7.32075c0.22844,0.45419 0.69338,0.74175 1.20131,0.74175h2.9885c0.99975,0 1.65013,-1.0535 1.20131,-1.94575l-3.25725,-6.50106c1.98606,-0.78744 3.39969,-2.71975 3.39969,-4.99069zM67.1875,81.96875v-5.375c0,-0.74175 0.602,-1.34375 1.34375,-1.34375h2.6875c0.74175,0 1.34375,0.602 1.34375,1.34375v5.375c0,0.74175 -0.602,1.34375 -1.34375,1.34375h-2.6875c-0.74175,0 -1.34375,-0.602 -1.34375,-1.34375z"></path></g><g><path d="M145.125,150.5v-10.75c0,-4.44512 -3.61738,-8.0625 -8.0625,-8.0625h-2.6875v-67.1875c0,-26.67344 -21.70156,-48.375 -48.375,-48.375c-26.67344,0 -48.375,21.70156 -48.375,48.375v67.1875h-2.6875c-4.44513,0 -8.0625,3.61738 -8.0625,8.0625v10.75h-8.0625v5.375h134.375v-5.375zM43,69.875h5.375v-5.375h-5.375c0,-1.82481 0.1505,-3.60931 0.37356,-5.375h10.37644v-5.375h-9.33369c4.79181,-18.51419 21.59138,-32.25 41.58369,-32.25c23.70913,0 43,19.29088 43,43v40.3125h-16.125v5.375h16.125v5.375h-10.75v5.375h10.75v10.75h-86zM67.1875,150.5v-5.375h-5.375v5.375h-5.375v-5.375h-5.375v5.375h-5.375v-5.375h-5.375v5.375h-8.0625v-10.75c0,-1.48081 1.20669,-2.6875 2.6875,-2.6875h102.125c1.48081,0 2.6875,1.20669 2.6875,2.6875v10.75z" fill="url(#color-4_9__1GgT5ZSuW_gr4)"></path><path d="M123.625,64.5c0,-20.7475 -16.8775,-37.625 -37.625,-37.625v5.375c17.78319,0 32.25,14.46681 32.25,32.25z" fill="url(#color-5_9__1GgT5ZSuW_gr5)"></path></g></g></g></svg>
+                                    </span> Death
+                                </h3>
+                                <h3 class="h4 font-weight-light" id="total-death-number">3422342</h3>
+                                <h3 class="h4 font-weight-light" id="total-death-number-percent">231%</h3>
+                            </div>
+                        </div>
+                        <div class="recovered col  card mr-3 mb-3 shadow rounded card-recovered fade">
+                            <div class="card-body text-center d-flex flex-column justify-content-center">
+                                <h3 class="h4 font-weight-light"><span><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                    width="64" height="64"
+                                    viewBox="0 0 172 172"
+                                    style=" fill:#000000;"><defs><linearGradient x1="86" y1="26.42619" x2="86" y2="147.04925" gradientUnits="userSpaceOnUse" id="color-1_48312_gr1"><stop offset="0" stop-color="#7de3c3"></stop><stop offset="1" stop-color="#0ba360"></stop></linearGradient><linearGradient x1="135.71875" y1="90.48006" x2="135.71875" y2="118.98369" gradientUnits="userSpaceOnUse" id="color-2_48312_gr2"><stop offset="0" stop-color="#d9f7ee"></stop><stop offset="1" stop-color="#2df19b"></stop></linearGradient><linearGradient x1="38.96875" y1="34.48869" x2="38.96875" y2="66.89188" gradientUnits="userSpaceOnUse" id="color-3_48312_gr3"><stop offset="0" stop-color="#d9f7ee"></stop><stop offset="1" stop-color="#2df19b"></stop></linearGradient></defs><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g><path d="M83.3125,145.125c-14.04487,0 -67.1875,-35.44275 -67.1875,-83.3125c0,-19.264 15.6735,-34.9375 34.9375,-34.9375c14.50444,0 26.97444,8.88756 32.25,21.5c5.27556,-12.61244 17.74556,-21.5 32.25,-21.5c19.264,0 34.9375,15.6735 34.9375,34.9375c0,8.34738 -1.64744,16.81569 -4.89931,25.16306l-2.08819,4.3645l-2.57462,-1.72537c-3.53675,-2.365 -7.66206,-3.61469 -11.93787,-3.61469c-11.85456,0 -21.5,9.64544 -21.5,21.5c0,11.85456 9.64544,21.5 21.5,21.5c11.85456,0 21.5,-9.64544 21.5,-21.5h5.375c0,14.81888 -12.05612,26.875 -26.875,26.875c-5.805,0 -11.18537,-1.849 -15.58481,-4.99069c-11.55088,9.45731 -23.521,15.74069 -30.10269,15.74069zM51.0625,32.25c-16.29969,0 -29.5625,13.26281 -29.5625,29.5625c0,43.86 49.30219,77.9375 61.8125,77.9375c4.33494,0 14.73825,-4.8805 26.00963,-13.96425c-4.46394,-4.79987 -7.19712,-11.23106 -7.19712,-18.28575c0,-14.81888 12.05612,-26.875 26.875,-26.875c4.26506,0 8.41456,0.99706 12.16631,2.90519c2.60419,-7.12725 3.95869,-14.48294 3.95869,-21.71769c0,-16.29969 -13.26281,-29.5625 -29.5625,-29.5625c-16.29969,0 -29.5625,13.26281 -29.5625,29.5625h-5.375c0,-16.29969 -13.26281,-29.5625 -29.5625,-29.5625z" fill="url(#color-1_48312_gr1)"></path><path d="M129,117.12931c-1.376,0 -2.752,-0.52138 -3.80013,-1.56681l-6.15975,-6.16244l3.80013,-3.80013l6.15975,6.15975l19.60262,-19.59725l3.80013,3.80013l-19.59725,19.59725c-1.05081,1.04812 -2.4295,1.5695 -3.8055,1.5695z" fill="url(#color-2_48312_gr2)"></path><path d="M51.0625,37.625c-13.35956,0 -24.1875,10.82794 -24.1875,24.1875h24.1875z" fill="url(#color-3_48312_gr3)"></path></g></g></svg></span>                                    Recovered</h3>
+                                <h3 class="h4 font-weight-light" id="total-recovered-number">3422342</h3>
+                                <h3 class="h4 font-weight-light" id="total-recovered-number-percent"><span class="badge badge-success">33%</span></h3>
+                            </div>
+                        </div>
+                        <div class="active col card mb-3 shadow rounded card-active fade">
+                            <div class="card-body text-center d-flex flex-column justify-content-center">
+                                <h3 class="h4 font-weight-light">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+width="64" height="64"
+viewBox="0 0 172 172"
+style=" fill:#000000;"><defs><linearGradient x1="86" y1="71.21875" x2="86" y2="122.32156" gradientUnits="userSpaceOnUse" id="color-1_44810_gr1"><stop offset="0" stop-color="#eaee83"></stop><stop offset="1" stop-color="#fdc599"></stop></linearGradient><linearGradient x1="86" y1="17.92294" x2="86" y2="155.43963" gradientUnits="userSpaceOnUse" id="color-2_44810_gr2"><stop offset="0" stop-color="#d9e021"></stop><stop offset="1" stop-color="#fb872b"></stop></linearGradient></defs><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g><path d="M107.49731,91.375h-16.12231v-16.12231c0,-1.4835 -1.204,-2.69019 -2.6875,-2.69019h-5.375c-1.4835,0 -2.6875,1.20669 -2.6875,2.69019v16.12231h-16.12231c-1.48619,0 -2.69019,1.204 -2.69019,2.69019v5.375c0,1.4835 1.204,2.6875 2.69019,2.6875h16.12231v16.125c0,1.4835 1.204,2.6875 2.6875,2.6875h5.375c1.4835,0 2.6875,-1.204 2.6875,-2.6875v-16.125h16.12231c1.48619,-0.00269 2.69019,-1.204 2.69019,-2.69019v-5.375c0,-1.4835 -1.204,-2.6875 -2.69019,-2.6875z" fill="url(#color-1_44810_gr1)"></path><path d="M142.4375,137.05981v-54.59119c0,0.52675 1.77912,0.84656 2.74662,0.84656c0.79281,0 1.591,-0.18275 2.33812,-0.55362c1.80062,-0.89225 2.924,-2.69825 2.93475,-4.71388l0.043,-9.61587c0.00538,-1.66894 -0.78744,-3.25994 -2.12044,-4.257l-59.22981,-44.30881c-1.88394,-1.40556 -4.41287,-1.40825 -6.2995,0l-59.22712,44.30881c-1.33031,0.99706 -2.12312,2.58806 -2.11775,4.25969l0.043,9.61587c0.01075,2.01294 1.13144,3.82163 2.93206,4.71388c1.64475,0.817 2.39456,0.67456 5.08206,-0.28219v54.58044c-5.375,0 -8.0625,3.61738 -8.0625,8.0625v8.0625h129v-8.06519c0,-4.44512 -5.375,-8.0625 -8.0625,-8.0625zM26.92069,78.0235l-0.07794,-9.546l59.09006,-44.30613l59.18681,44.2255l0.13975,9.54063h-0.00538l-56.09081,-42.16956c-0.93256,-0.69875 -2.04787,-1.04544 -3.16319,-1.04544c-1.11531,0 -2.23062,0.35206 -3.1605,1.0535zM34.9375,131.6875h21.5v-5.375h-21.5v-5.375h10.75v-5.375h-10.75v-37.05256l50.99531,-38.43394l51.12969,38.442v37.0445h-10.75v5.375h10.75v5.375h-21.5v5.375h21.5v5.375h-102.125zM145.125,147.8125h-118.25v-2.69019c0,-1.48081 1.20937,-2.68481 2.69288,-2.68481h112.86694c1.48081,0 2.69019,1.204 2.69019,2.68481z" fill="url(#color-2_44810_gr2)"></path></g></g></svg>
+                                    </span> Active
+                                </h3>
+                                <h3 class="h4 font-weight-light" id="total-active-number">3422342</h3>
+                                <h3 class="h4 font-weight-light" id="total-active-number-percent">231%</h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="cases col-12 d-flex flex-column flex-md-row p-0 row mx-auto">
-                    <div class="death col  card mr-3 mb-3 shadow rounded card-death fade">
-                        <div class="card-body text-center d-flex flex-column justify-content-center">
-                            <h3 class="h3 font-weight-light">Death</h3>
-                            <h3 class="h4 font-weight-light" id="total-death-number">3422342</h3>
-                            <h3 class="h4 font-weight-light" id="total-death-number-percent">231%</h3>
-                        </div>
-                    </div>
-                    <div class="recovered col  card mr-3 mb-3 shadow rounded card-recovered fade">
-                        <div class="card-body text-center d-flex flex-column justify-content-center">
-                            <h3 class="h3 font-weight-light">Recovered</h3>
-                            <h3 class="h4 font-weight-light" id="total-recovered-number">3422342</h3>
-                            <h3 class="h4 font-weight-light" id="total-recovered-number-percent"><span class="badge badge-success">33%</span></h3>
-                        </div>
-                    </div>
-                    <div class="active col card mb-3 shadow rounded card-active fade">
-                        <div class="card-body text-center d-flex flex-column justify-content-center">
-                            <h3 class="h3 font-weight-light">Active</h3>
-                            <h3 class="h4 font-weight-light" id="total-active-number">3422342</h3>
-                            <h3 class="h4 font-weight-light" id="total-active-number-percent">231%</h3>
-                        </div>
-                    </div>
+                <div class="col-lg-6 col-12">
+                    <canvas id="canvas-global-data"></canvas>
                 </div>
-            </div>
-            <div class="col-lg-6 col-12">
-                <canvas id="canvas-global-data"></canvas>
-            </div>
-            <div class="col-md-10 col-12 mx-auto my-5 p-3">
-                <h2 class="h4 font-weight-light">About this data</h2>
-                <p class="font-weight-light">
-                    It changes rapidly This data changes rapidly and might not reflect some cases still being reported.
-                </p>
-                <p class="font-weight-light">
-                    It only includes people tested Cases only include people who were tested and confirmed positive. Testing rules and availability vary by country. Some areas may not have data because they haven’t published their data or haven’t done so recently.
-                </p>
-                <p class="font-weight-light">
-                    <span class=" font-weight-normal">
+                <div class="col-md-10 col-12 mx-auto my-5 p-3">
+                    <h2 class="h4 font-weight-light">About this data</h2>
+                    <p class="font-weight-light">
+                        It changes rapidly This data changes rapidly and might not reflect some cases still being reported.
+                    </p>
+                    <p class="font-weight-light">
+                        It only includes people tested Cases only include people who were tested and confirmed positive. Testing rules and availability vary by country. Some areas may not have data because they haven’t published their data or haven’t done so recently.
+                    </p>
+                    <p class="font-weight-light">
+                        <span class=" font-weight-normal">
                         Why do I see different data from different sources?
                     </span> <br> There are various sources that are tracking and aggregating coronavirus data. They update at different times and may have different ways of gathering data.
-                </p>
+                    </p>
+                </div>
+            </section>
+            <div class="row ">
+                <hr class="col-10 col-md-8 col-lg-6 mx-auto">
             </div>
-        </section>
-        <div class="row ">
-            <hr class="col-10 col-md-8 col-lg-6 mx-auto">
-        </div>
-        <section class="client-country row my-5" id="client-country-data">
-            <!-- <h3 class="col-12 text-center h3 font-weight-light mt-sm-3 mt-lg-5 mb-0">your country</h3> -->
+            <section class="client-country row my-5" id="client-country-data">
+                <!-- <h3 class="col-12 text-center h3 font-weight-light mt-sm-3 mt-lg-5 mb-0">your country</h3> -->
 
-            <div class="col-sm-12 col-md-8 col-lg-4 mx-auto mb-5 client-country-card">
-                <!-- <div class="card shadow rounded">
+                <div class="col-sm-12 col-md-8 col-lg-4 mx-auto mb-5 client-country-card">
+                    <!-- <div class="card shadow rounded">
                     <div class="card-body text-center">
                         <p class="h3 font-weight-light">afghanistan</p>
                         <p class="h4 font-weight-light text-info">total 565261</p>
@@ -172,37 +204,37 @@
                         <p class="h4 font-weight-light  text-success">Recoverd 8328 <span class="badge badge-success">33%</span></p>
                     </div>
                 </div> -->
-            </div>
-            <div class="col-12 col-md-10 mx-auto px-md-3 px-lg-5">
-                <canvas id="canvas-client-country-data">
+                </div>
+                <div class="col-12 col-md-10 mx-auto px-md-3 px-lg-5">
+                    <canvas id="canvas-client-country-data">
             </canvas>
-            </div>
+                </div>
 
-            <!-- <div class="col-12">
+                <!-- <div class="col-12">
                 <canvas>
 
                 </canvas>
             </div> -->
-        </section>
-        <div class="row ">
-            <hr class="col-10 col-md-8 col-lg-6 mx-auto">
-        </div>
-        <section class="search row my-5">
-            <div class="col-12 row mx-auto">
-                <div class="col-sm-12 col-md-6 mx-auto">
-                    <div class="input-group mb-3 input-group-lg">
-                        <input type="text" id="textBox" list="list" class="form-control" placeholder="Search">
-                        <datalist id="list"></datalist>
-                        <div class="input-group-append">
+            </section>
+            <div class="row ">
+                <hr class="col-10 col-md-8 col-lg-6 mx-auto">
+            </div>
+            <section class="search row my-5">
+                <div class="col-12 row mx-auto">
+                    <div class="col-sm-12 col-md-6 mx-auto">
+                        <div class="input-group mb-3 input-group-lg">
+                            <input type="text" id="textBox" list="list" class="form-control" placeholder="Search">
+                            <datalist id="list"></datalist>
+                            <div class="input-group-append">
 
 
-                            <button class="btn btn-success" type="submit" id="btn-search">Search</button>
+                                <button class="btn btn-success" type="submit" id="btn-search">Search</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-12 col-md-8 col lg-6 mx-auto my-5" id="search-card">
-                <!-- <div class="card shadow rounded">
+                <div class="col-sm-12 col-md-8 col lg-6 mx-auto my-5" id="search-card">
+                    <!-- <div class="card shadow rounded">
                     <div class="card-body" id="search-card-body">
                         <p>afghanistan</p>
                         <p>total 565261</p>
@@ -211,30 +243,30 @@
                         <p>Recoverd 8328 <span class="badge badge-success">33%</span></p>
                     </div>
                 </div> -->
-            </div>
-            <div class="col-12 col-lg-10 mx-auto search-canvas">
-                <div class="loader-search">
+                </div>
+                <div class="col-12 col-lg-10 mx-auto search-canvas">
+                    <div class="loader-search">
 
 
-                    <svg class="svg-search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="30%" height="30%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                        <svg class="svg-search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="30%" height="30%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
                        <circle cx="50" cy="50" fill="none" stroke="#1d6bfd" stroke-width="3" r="37" stroke-dasharray="174.35839227423352 60.119464091411174" transform="rotate(83.2789 50 50)">
                          <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.0416666666666665s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
                        </circle>
                        </svg>
-                </div>
-                <canvas id="search-canvas">
+                    </div>
+                    <canvas id="search-canvas">
 
                 </canvas>
+                </div>
+            </section>
+            <div class="row">
+                <hr class="col-10 col-md-8 col-lg-6 mx-auto">
             </div>
-        </section>
-        <div class="row">
-            <hr class="col-10 col-md-8 col-lg-6 mx-auto">
-        </div>
-        <section class="top-ten-countries row my-5">
+            <section class="top-ten-countries row my-5">
 
-            <h2 class="col-12 h2 font-weight-light text-center  mb-5">Top 8 countries</h2>
-            <div class="col row d-flex flex-lg-row flex-column mx-auto" id="top-ten">
-                <!-- <div class="col col-lg-6 mx-auto row d-flex flex-column flex-sm-column flex-md-row">
+                <h2 class="col-12 h2 font-weight-light text-center  mb-5">Top 8 countries</h2>
+                <div class="col row d-flex flex-lg-row flex-column mx-auto" id="top-ten">
+                    <!-- <div class="col col-lg-6 mx-auto row d-flex flex-column flex-sm-column flex-md-row">
 
                     <div class="col mb-3">
                         <div class="card shadow rounded">
@@ -286,29 +318,29 @@
                     </div>
 
                 </div> -->
+                </div>
+
+            </section>
+            <div class="row">
+                <hr class="col-10 col-md-8 col-lg-6 mx-auto">
             </div>
+            <section class="all-countries row my-5">
+                <h2 class="font-weight-light h3 col-12 text-center">All countries</h2>
+                <div class="col-12 table-responsive-md">
+                    <table class="table ">
+                        <thead class="">
+                            <tr class="">
+                                <td class="text-center text-white bg-info">Country</td>
+                                <td class="text-center text-white bg-primary">Confirmed</td>
+                                <td class="text-center text-white bg-danger">Death</td>
 
-        </section>
-        <div class="row">
-            <hr class="col-10 col-md-8 col-lg-6 mx-auto">
-        </div>
-        <section class="all-countries row my-5">
-            <h2 class="font-weight-light h3 col-12 text-center">All countries</h2>
-            <div class="col-12 table-responsive-md">
-                <table class="table ">
-                    <thead class="">
-                        <tr class="">
-                            <td class="text-center text-white bg-info">Country</td>
-                            <td class="text-center text-white bg-primary">Confirmed</td>
-                            <td class="text-center text-white bg-danger">Death</td>
-
-                            <td class="text-center text-white bg-success">Recoverd</td>
-                            <td class="text-center text-white bg-warning">Active</td>
-                            <td class="text-center text-white bg-danger">Critical</td>
-                        </tr>
-                    </thead>
-                    <tbody class="tbody" id="all-countries">
-                        <!-- <tr class="tr">
+                                <td class="text-center text-white bg-success">Recoverd</td>
+                                <td class="text-center text-white bg-warning">Active</td>
+                                <td class="text-center text-white bg-danger">Critical</td>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody" id="all-countries">
+                            <!-- <tr class="tr">
                             <td class="text-center align-middle">23123</td>
                             <td class="text-center align-middle">1826131</td>
                             <td class="text-center align-middle">105877 <span class="badge badge-danger">34%</span></td>
@@ -317,13 +349,13 @@
                             <td class="text-center align-middle">105877 <span class="badge badge-warning">67%</span></td>
                         </tr> -->
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
 
-            </div>
-            <ul class="pagination justify-content-center   mx-auto pagination-lg" style="margin:20px 0" id="pagination-ul">
+                </div>
+                <ul class="pagination justify-content-center   mx-auto pagination-lg" style="margin:20px 0" id="pagination-ul">
 
-                <!-- <li class="page-item"><button class="page-link" href="#">first</button></li>
+                    <!-- <li class="page-item"><button class="page-link" href="#">first</button></li>
                 <li class="page-item"><a class="page-link" href="#">1</a></li>
                 <li class="page-item active"><a class="page-link" href="#">2</a></li>
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
@@ -331,15 +363,16 @@
                 <li class="page-item"><a class="page-link" href="#">last</a></li> -->
 
 
-            </ul>
-        </section>
+                </ul>
+            </section>
 
-    </main>
-    <footer class="container bg-primarycontainer p-3  bg-primary text-white">
+        </main>
+        <footer class="container bg-primarycontainer p-3  bg-primary text-white">
 
-    </footer>
+        </footer>
 
 
+    </div>
     <script src="app.js"></script>
 </body>
 

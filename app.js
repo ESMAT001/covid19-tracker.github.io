@@ -45,7 +45,12 @@ function fadeEffect(e) {
 }
 //navbtn
 
-document.getElementById("navBtn").addEventListener("click", (e) => {
+document.getElementById("navBtn").addEventListener("click", () => {
+    let target = document.getElementById("navBtn").getAttribute("trgt");
+    document.getElementById(target).classList.toggle("navBar-fade");
+    document.getElementById(target).classList.toggle("navBar-apear");
+})
+document.querySelector(".btn-x").addEventListener("click", () => {
     let target = document.getElementById("navBtn").getAttribute("trgt");
     document.getElementById(target).classList.toggle("navBar-fade");
     document.getElementById(target).classList.toggle("navBar-apear");
@@ -106,6 +111,7 @@ $(document).ready(() => {
             if (data[i].countryCode == null) {
                 continue;
             } else {
+                let countryCode = data[i].countryCode;
                 let country = data[i].country;
                 let total = data[i].totalConfirmed;
                 let death = data[i].totalDeaths;
@@ -114,7 +120,7 @@ $(document).ready(() => {
                 let active = data[i].activeCases;
 
                 let html = `<tr class="tr">
-              <td class="text-center align-middle">${country}</td>
+              <td class="text-left align-middle"><span> <img class="flag-icon" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${countryCode.toLowerCase()}.svg" alt="${country}-flag" ></span> ${country}</td>
               <td class="text-center align-middle table-total">${total}</td>
               <td class="text-center align-middle table-death">${death} <span class="badge badge-danger">${getPercent(total,death)}%</span></td>
               <td class="text-center align-middle table-recovered">${recovered} <span class="badge badge-success">${getPercent(total,recovered)}%</span></td>
@@ -157,7 +163,7 @@ $(document).ready(() => {
                 <div class="col mb-3">
                     <div class="card shadow rounded h-100 fade">
                     <div class="card-body text-center">
-                    <p class="h3 font-weight-light">${data[i].country}</p>
+                    <p class="h4 font-weight-light"><span><img class="flag-icon" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${data[i].countryCode.toLowerCase()}.svg" alt="${data[i].country}-flag" ></span> ${data[i].country}</p>
                     <p class="h4 font-weight-light text-primary">Total ${data[i].totalConfirmed}</p>
                     <p class="h4 font-weight-light text-warning">Active ${data[i].activeCases} <span class="badge badge-warning">${getPercent(data[i].totalConfirmed,data[i].activeCases)}%</span></p>
                     <p class="h4 font-weight-light text-danger">Death  ${data[i].totalDeaths} <span class="badge badge-danger">${getPercent(data[i].totalConfirmed,data[i].totalDeaths)}%</span></p>
@@ -168,7 +174,7 @@ $(document).ready(() => {
                 <div class="col mb-3">
                     <div class="card shadow h-100 rounded fade">
                     <div class="card-body text-center">
-                    <p class="h3 font-weight-light">${data[i+1].country}</p>
+                    <p class="h4 font-weight-light"><span><img class="flag-icon" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${data[i+1].countryCode.toLowerCase()}.svg" alt="${data[i+1].country}-flag" ></span> ${data[i+1].country}</p>
                     <p class="h4 font-weight-light text-primary">Total ${data[i+1].totalConfirmed}</p>
                     <p class="h4 font-weight-light text-warning">Active ${data[i+1].activeCases} <span class="badge badge-warning">${getPercent(data[i+1].totalConfirmed,data[i+1].activeCases)}%</span></p>
                     <p class="h4 font-weight-light text-danger">Death  ${data[i+1].totalDeaths} <span class="badge badge-danger">${getPercent(data[i+1].totalConfirmed,data[i+1].totalDeaths)}%</span></p>
@@ -312,7 +318,7 @@ $(document).ready(() => {
                     $(".client-country-card").empty();
                     let html = `<div class="card shadow rounded fade">
                     <div class="card-body text-center">
-                        <p class="h3 font-weight-light">${country}</p>
+                        <p class="hh4 font-weight-light"><span><img class="flag-icon" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${countryCode.toLowerCase()}.svg" alt="${country}-flag" ></span> ${country}</p>
                         <p class="h4 font-weight-light text-primary">Total ${total}</p>
                         <p class="h4 font-weight-light text-warning">Active ${active} <span class="badge badge-warning">${getPercent(total,active)}%</span></p>
                         <p class="h4 font-weight-light text-danger">Death ${death} <span class="badge badge-danger">${getPercent(total,death)}%</span></p>
@@ -590,6 +596,7 @@ $(document).ready(() => {
                 for (let i = 0; i < data.length; i++) {
                     if (code === data[i].countryCode) {
                         condition = true;
+                        let countryCode = data[i].countryCode;
                         let country = data[i].country;
                         let total = data[i].totalConfirmed;
                         let death = data[i].totalDeaths;
@@ -601,7 +608,7 @@ $(document).ready(() => {
                         insertCountryDataChart(data[i].countryCode, 'search-canvas');
                         let card = `<div class="card shadow rounded apear">
                         <div class="card-body text-center mt-3" id="search-card-body">
-                        <p class="h3 font-weight-light">${country}</p>
+                        <p class="h4 font-weight-light"><span><img class="flag-icon" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${countryCode.toLowerCase()}.svg" alt="${country}-flag" ></span> ${country}</p>
                         <p class="h4 font-weight-light text-primary">Total : ${total}</p>
                         <p class="h4 font-weight-light text-warning">Active ${active} <span class="badge badge-warning">${getPercent(total,active)}%</span></p>
                         <p class="h4 font-weight-light text-danger">Death ${death} <span class="badge badge-danger">${getPercent(total,death)}%</span></p>
@@ -627,7 +634,10 @@ $(document).ready(() => {
 })
 
 function getPercent(total, current) {
-    if (total == 0) {
+    if (total == 0 && current == 0) {
+        return 0;
+    } else if (total == 0) {
+
         return "N/A";
     } else {
         return ((100 * current) / total).toFixed(1);

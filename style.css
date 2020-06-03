@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
 body {
     background-color: white;
+    font-family: 'Rubik', sans-serif;
+}
+
+header {
+    background-color: #fff;
+}
+
+.root {
+    background-color: #f9fafb;
 }
 
 .overflow {
@@ -37,7 +47,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: 90;
-    background-color: #08aae1;
+    background-color: #f9fafb;
     position: fixed;
     top: 0;
 }
@@ -52,8 +62,23 @@ body {
     transition: all 1s;
 }
 
-#navBtn {
-    z-index: 95;
+.btn-x {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 3.5%;
+    left: 93%;
+    transform: translate(-96%, -3%);
+}
+
+.img-x {
+    width: 1.7rem;
+    opacity: 0.7;
+}
+
+.img-menu {
+    width: 1.7rem;
+    opacity: 0.7;
 }
 
 .nav-ul {
@@ -79,7 +104,8 @@ body {
     top: 97.5%;
     /* left: 50%; */
     transform: translateY(-95%);
-    color: rgba(255, 255, 255, 0.603);
+    color: rgba(0, 0, 0, 0.507);
+    font-size: 0.8rem;
     text-align: center;
 }
 
@@ -155,6 +181,12 @@ td {
 .fade {
     opacity: 0;
     transform: translateX(-30px);
+}
+
+.flag-icon {
+    width: 2.8rem;
+    border-radius: 4px;
+    /* margin-right: 10px; */
 }
 
 @media (max-width:540px) {

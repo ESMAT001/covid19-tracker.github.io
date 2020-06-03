@@ -29,7 +29,7 @@
     <title>covid 19 tracker</title>
 </head>
 
-<body>
+<body class="overflow" id="body">
     <!-- loader -->
     <div class="loader">
         <h3 class="loader-text">
@@ -52,6 +52,10 @@
                 <h1 class="h1 font-weight-light">covid 19 tracker</h1>
                 <p class="font-weight-light ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis obcaecati nesciunt numquam ipsam dolorum. Natus nemo perferendis laboriosam quo qui, recusandae, quam veniam architecto placeat, doloribus laudantium ad inventore ipsum.</p>
             </div>
+            <div class="col-md-10 col-12 mx-auto my-3 p-3">
+                <h1 class="h1 font-weight-light">covid 19 tracker</h1>
+                <p class="font-weight-light ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis obcaecati nesciunt numquam ipsam dolorum. Natus nemo perferendis laboriosam quo qui, recusandae, quam veniam architecto placeat, doloribus laudantium ad inventore ipsum.</p>
+            </div>
 
 
         </section>
@@ -61,27 +65,27 @@
         <section class=" global row my-4">
             <h3 class="col-12 mb-5 h2 text-center font-weight-light">Global</h3>
             <div class="col-lg-6 col-12 p-0 row mx-auto">
-                <div class="total col-12 p-0 card mb-3 shadow rounded card-total">
+                <div class="total col-12 p-0 card mb-3 shadow rounded card-total fade">
                     <div class="card-body d-flex flex-column justify-content-center">
                         <h3 class="align-middle text-center h3 font-weight-light global-total-text">Total Confirmed: <span id="global-total-case">56162561</span></h3>
                     </div>
                 </div>
                 <div class="cases col-12 d-flex flex-column flex-md-row p-0 row mx-auto">
-                    <div class="death col  card mr-3 mb-3 shadow rounded card-death">
+                    <div class="death col  card mr-3 mb-3 shadow rounded card-death fade">
                         <div class="card-body text-center d-flex flex-column justify-content-center">
                             <h3 class="h3 font-weight-light">Death</h3>
                             <h3 class="h4 font-weight-light" id="total-death-number">3422342</h3>
                             <h3 class="h4 font-weight-light" id="total-death-number-percent">231%</h3>
                         </div>
                     </div>
-                    <div class="recovered col  card mr-3 mb-3 shadow rounded card-recovered">
+                    <div class="recovered col  card mr-3 mb-3 shadow rounded card-recovered fade">
                         <div class="card-body text-center d-flex flex-column justify-content-center">
                             <h3 class="h3 font-weight-light">Recovered</h3>
                             <h3 class="h4 font-weight-light" id="total-recovered-number">3422342</h3>
                             <h3 class="h4 font-weight-light" id="total-recovered-number-percent"><span class="badge badge-success">33%</span></h3>
                         </div>
                     </div>
-                    <div class="active col card mb-3 shadow rounded card-active">
+                    <div class="active col card mb-3 shadow rounded card-active fade">
                         <div class="card-body text-center d-flex flex-column justify-content-center">
                             <h3 class="h3 font-weight-light">Active</h3>
                             <h3 class="h4 font-weight-light" id="total-active-number">3422342</h3>

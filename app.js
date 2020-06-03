@@ -14,7 +14,35 @@ window.addEventListener("resize", () => {
         aspectRatio = 2;
     }
 })
+window.addEventListener("scroll", fadeEffect);
+window.addEventListener("loadend", fadeEffect);
 
+function fadeEffect(e) {
+    // console.log(document.querySelector(".fade").getBoundingClientRect().top);
+    // console.log(window.innerHeight);
+    var num = document.querySelectorAll(".fade");
+    var fadePoint = window.innerHeight / 1.4;
+    var num2 = 0;
+
+    for (let i = 0; i < num.length; i++) {
+        if (num[i].getBoundingClientRect().top <= fadePoint) {
+            // var x = document.querySelectorAll(".project");
+            // for (var i = 0; i < x.length; i++) {
+            //     x[i].classList.add("apear");
+            // }
+            num[i].classList.remove("fade");
+            num[i].classList.add("apear");
+            num2++;
+            console.log("done");
+            // this.removeEventListener("scroll", run);
+        }
+
+    }
+    if (num2 === num.length) {
+        window.removeEventListener("scroll", fadeEffect);
+        console.log("donee");
+    }
+}
 $(document).ready(() => {
     var state = {
         'querySet': undefined,
@@ -106,7 +134,7 @@ $(document).ready(() => {
                 let html = `<div class="col col-lg-6 mx-auto row d-flex flex-column flex-sm-column flex-md-row">
 
                 <div class="col mb-3">
-                    <div class="card shadow rounded">
+                    <div class="card shadow rounded h-100 fade">
                     <div class="card-body text-center">
                     <p class="h3 font-weight-light">${data[i].country}</p>
                     <p class="h4 font-weight-light text-primary">Total ${data[i].totalConfirmed}</p>
@@ -117,7 +145,7 @@ $(document).ready(() => {
                     </div>
                 </div>
                 <div class="col mb-3">
-                    <div class="card shadow rounded">
+                    <div class="card shadow h-100 rounded fade">
                     <div class="card-body text-center">
                     <p class="h3 font-weight-light">${data[i+1].country}</p>
                     <p class="h4 font-weight-light text-primary">Total ${data[i+1].totalConfirmed}</p>
@@ -257,7 +285,7 @@ $(document).ready(() => {
                 console.log(countryCode)
                 if (res) {
                     $(".client-country-card").empty();
-                    let html = `<div class="card shadow rounded">
+                    let html = `<div class="card shadow rounded fade">
                     <div class="card-body text-center">
                         <p class="h3 font-weight-light">${country}</p>
                         <p class="h4 font-weight-light text-primary">Total ${total}</p>
@@ -269,19 +297,23 @@ $(document).ready(() => {
                     $(".client-country-card").append(html);
                     insertCountryDataChart(countryCode, 'canvas-client-country-data');
                     $(".loader").fadeOut(600);
+                    document.getElementById("body").classList.remove("overflow");
                 } else {
                     $("#client-country-data").hide();
                     $(".loader").fadeOut(800);
+                    document.getElementById("body").classList.remove("overflow");
                 }
             }, (rejRes) => {
                 console.log("msg3rej");
                 $("#client-country-data").hide();
                 $(".loader").fadeOut(800);
+                document.getElementById("body").classList.remove("overflow");
             })
 
         } else {
             $("#client-country-data").hide();
             $(".loader").fadeOut(800);
+            document.getElementById("body").classList.remove("overflow");
         }
 
     }
@@ -420,7 +452,7 @@ $(document).ready(() => {
                 legend: {
                     display: false,
                     labels: {
-                        // This more specific font property overrides the global property
+
                         fontColor: 'black',
                     }
                 },
@@ -517,38 +549,46 @@ $(document).ready(() => {
     //search start///
     function search(data) {
         $(".search-canvas").hide();
+        $("#search-card").hide();
         document.querySelector("#btn-search").addEventListener("click", () => {
             $("#search-card").empty();
             let code = document.getElementById("textBox").value;
             let condition = false;
-            for (let i = 0; i < data.length; i++) {
-                if (code === data[i].countryCode) {
-                    condition = true;
-                    let country = data[i].country;
-                    let total = data[i].totalConfirmed;
-                    let death = data[i].totalDeaths;
-                    let critical = data[i].totalCritical;
-                    let recovered = data[i].totalRecovered;
-                    let active = data[i].activeCases;
-                    console.log(country);
-                    $(".search-canvas").show();
-                    insertCountryDataChart(data[i].countryCode, 'search-canvas');
-                    let card = `<div class="card shadow rounded">
-                    <div class="card-body text-center mt-3" id="search-card-body">
-                    <p class="h3 font-weight-light">${country}</p>
-                    <p class="h4 font-weight-light text-primary">Total : ${total}</p>
-                    <p class="h4 font-weight-light text-warning">Active ${active} <span class="badge badge-warning">${getPercent(total,active)}%</span></p>
-                    <p class="h4 font-weight-light text-danger">Death ${death} <span class="badge badge-danger">${getPercent(total,death)}%</span></p>
-                    <p class="h4 font-weight-light text-success">Recoverd ${recovered} <span class="badge badge-success">${getPercent(total,recovered)}%</span></p>
-                      </div>
-                     </div>`;
-                    $("#search-card").append(card);
+            if (code != "") {
+                for (let i = 0; i < data.length; i++) {
+                    if (code === data[i].countryCode) {
+                        condition = true;
+                        let country = data[i].country;
+                        let total = data[i].totalConfirmed;
+                        let death = data[i].totalDeaths;
+                        let critical = data[i].totalCritical;
+                        let recovered = data[i].totalRecovered;
+                        let active = data[i].activeCases;
+                        console.log(country);
+                        $(".search-canvas").show();
+                        insertCountryDataChart(data[i].countryCode, 'search-canvas');
+                        let card = `<div class="card shadow rounded apear">
+                        <div class="card-body text-center mt-3" id="search-card-body">
+                        <p class="h3 font-weight-light">${country}</p>
+                        <p class="h4 font-weight-light text-primary">Total : ${total}</p>
+                        <p class="h4 font-weight-light text-warning">Active ${active} <span class="badge badge-warning">${getPercent(total,active)}%</span></p>
+                        <p class="h4 font-weight-light text-danger">Death ${death} <span class="badge badge-danger">${getPercent(total,death)}%</span></p>
+                        <p class="h4 font-weight-light text-success">Recoverd ${recovered} <span class="badge badge-success">${getPercent(total,recovered)}%</span></p>
+                          </div>
+                         </div>`;
+                        $("#search-card").append(card);
+                        $("#search-card").fadeIn(600);
+                    }
                 }
-            }
-            if (!condition) {
-                $("#search-card").html('<p class="text-center font-weight-light text-danger">Sorry! country not found </p>');
+                if (!condition) {
+                    $("#search-card").html('<p class="text-center font-weight-light text-danger">Sorry! country not found </p>');
+                    $(".search-canvas").hide();
+                }
+            } else {
+                $("#search-card").html('<p class="text-center font-weight-light text-danger">Please type a country name or country code</p>');
                 $(".search-canvas").hide();
             }
+
         })
     }
     ///search end///

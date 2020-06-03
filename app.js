@@ -43,6 +43,19 @@ function fadeEffect(e) {
         console.log("donee");
     }
 }
+//navbtn
+
+document.getElementById("navBtn").addEventListener("click", (e) => {
+    let target = document.getElementById("navBtn").getAttribute("trgt");
+    document.getElementById(target).classList.toggle("navBar-fade");
+    document.getElementById(target).classList.toggle("navBar-apear");
+})
+
+
+
+
+
+
 $(document).ready(() => {
     var state = {
         'querySet': undefined,
@@ -52,6 +65,8 @@ $(document).ready(() => {
 
     }
     getData();
+    getGlobalData();
+    topTenCountries();
     //ajax start////////
     async function getData() {
         try {
@@ -59,15 +74,16 @@ $(document).ready(() => {
             let data = await fetch("https://api.coronatracker.com/v3/stats/worldometer/country");
 
             if (data.status == 200) {
+                console.log("get data");
                 console.log("yesss");
                 data = await data.json();
                 state.querySet = data;
-                getGlobalData();
+
                 console.log(data);
                 insert();
                 search(data);
                 getLocationAndInsertIt(data);
-                topTenCountries();
+
 
 
             } else {
@@ -128,10 +144,12 @@ $(document).ready(() => {
 
         try {
             let data = await fetch("https://api.coronatracker.com/v3/stats/worldometer/topCountry?limit=8&sort=-confirmed");
-            data = await data.json();
 
-            for (let i = 0; i < data.length; i += 2) {
-                let html = `<div class="col col-lg-6 mx-auto row d-flex flex-column flex-sm-column flex-md-row">
+            if (data.status == 200) {
+                data = await data.json();
+                console.log("ten")
+                for (let i = 0; i < data.length; i += 2) {
+                    let html = `<div class="col col-lg-6 mx-auto row d-flex flex-column flex-sm-column flex-md-row">
 
                 <div class="col mb-3">
                     <div class="card shadow rounded h-100 fade">
@@ -157,9 +175,13 @@ $(document).ready(() => {
                 </div>
                 
                 </div>`
-                $("#top-ten").append(html)
+                    $("#top-ten").append(html)
+                }
+                console.log(data);
+            } else {
+                console.log("NOo")
+                topTenCountries();
             }
-            console.log(data);
         } catch (error) {
             console.log(error)
         }
@@ -325,6 +347,7 @@ $(document).ready(() => {
         try {
             let data = await fetch("https://api.coronatracker.com/v3/stats/worldometer/global");
             if (data.status == 200) {
+                console.log("get data global");
                 console.log("yesss");
                 data = await data.json();
                 // console.log(data);
@@ -351,7 +374,7 @@ $(document).ready(() => {
         $("#total-recovered-number").text(recovered)
         $("#total-recovered-number-percent").html(`<span class="badge badge-success">${getPercent(total, recovered)}%</span>`)
         $("#total-active-number").text(active)
-        $("#total-active-number-percent").html(`<span class="badge badge-warning">${getPercent(total, active) }%</span>`)
+        $("#total-active-number-percent").html(`<span class="badge badge-warning text-white">${getPercent(total, active) }%</span>`)
         createChartBar(total, death, recovered, active);
 
     }
@@ -393,10 +416,10 @@ $(document).ready(() => {
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: [],
+                labels: ['World status'],
                 datasets: [{
 
-                    label: 'total',
+                    label: 'Total',
                     data: [total],
                     backgroundColor: [
                         "rgba(0, 123, 255,0.7)"
@@ -405,10 +428,10 @@ $(document).ready(() => {
                         "rgb(0, 123, 255)",
                     ],
                     borderWidth: 1,
-                    order: 1
+
                 }, {
 
-                    label: 'death',
+                    label: 'Death',
                     data: [death],
                     backgroundColor: [
                         "rgba(220, 53, 69,0.7)"
@@ -417,10 +440,10 @@ $(document).ready(() => {
                         "rgba(220, 53, 69,0.8)"
                     ],
                     borderWidth: 1,
-                    order: 2
+
                 }, {
 
-                    label: 'recoverd',
+                    label: 'Recoverd',
                     data: [recoverd],
                     backgroundColor: [
                         "rgba(40, 167, 69,0.7)"
@@ -429,10 +452,10 @@ $(document).ready(() => {
                         "rgba(40, 167, 69,0.8)"
                     ],
                     borderWidth: 1,
-                    order: 3
+
                 }, {
 
-                    label: 'active',
+                    label: 'Active',
                     data: [active],
                     backgroundColor: [
                         "rgba(255, 193, 7,0.7)"
@@ -441,7 +464,7 @@ $(document).ready(() => {
                         "rgba(255, 193, 7,0.8)"
                     ],
                     borderWidth: 1,
-                    order: 4
+
                 }]
             },
             options: {
@@ -487,7 +510,7 @@ $(document).ready(() => {
                 labels: date,
                 datasets: [{
                     backgroundColor: "rgba(255,55,55,0)",
-                    label: 'death',
+                    label: 'Death',
                     data: death,
                     backgroundColor: [
                         "rgba(255, 0, 0, 0.87)"
@@ -499,7 +522,7 @@ $(document).ready(() => {
                     order: 1
                 }, {
                     backgroundColor: "rgba(255,55,55,0)",
-                    label: 'recoverd',
+                    label: 'Recoverd',
                     data: recoverd,
                     backgroundColor: [
                         "rgba(21, 212, 65, 0.88)"
@@ -511,7 +534,7 @@ $(document).ready(() => {
                     order: 2
                 }, {
                     backgroundColor: "rgba(255,55,55,0)",
-                    label: 'active',
+                    label: 'Active',
                     data: total,
                     backgroundColor: [
                         "rgba(255, 238, 0, 0.8)"
@@ -524,6 +547,10 @@ $(document).ready(() => {
                 }]
             },
             options: {
+                tooltips: {
+                    enabled: false,
+                    backgroundColor: "rgba(0,0,0,0)"
+                },
                 responsive: true,
 
                 aspectRatio: aspectRatio,
@@ -544,7 +571,7 @@ $(document).ready(() => {
                 }
             }
         })
-
+        console.log(myChart);
     }
     //search start///
     function search(data) {
@@ -552,7 +579,9 @@ $(document).ready(() => {
         $("#search-card").hide();
         document.querySelector("#btn-search").addEventListener("click", () => {
             $("#search-card").empty();
-            let code = document.getElementById("textBox").value;
+            $(".search-canvas").hide();
+            $(".loader-search").fadeIn(600);
+            let code = document.getElementById("textBox").value.toUpperCase();
             let condition = false;
             if (code != "") {
                 for (let i = 0; i < data.length; i++) {

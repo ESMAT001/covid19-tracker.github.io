@@ -20,6 +20,10 @@
     <!-- chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
+
+
+
+    <!-- <script src="https://kit.fontawesome.com/cb9a1ffae5.js" crossorigin="anonymous"></script> -->
     <!-- 
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;500&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> -->
@@ -32,7 +36,7 @@
 <body class="overflow" id="body">
     <!-- loader -->
     <div class="loader">
-        <h3 class="loader-text">
+        <h3 class="loader-text h3 font-weight-light">
             loading
         </h3>
 
@@ -43,8 +47,48 @@
            </svg>
     </div>
     <!-- /loader -->
-    <header class="container bg-primarycontainer p-3 bg-primary text-white">
-        <nav></nav>
+    <header class="container-fluid px-0">
+        <div class="navBar navBar-fade" id="nav">
+            <a class="h4 a-cov font-weight-light text-white" href="#"> <img class="cov-img mx-auto" src="https://img.icons8.com/nolan/96/coronavirus.png" width="" />
+                <span class="">Cov-19 tracker</span></a>
+            <ul class="nav justify-content-center  flex-column nav-ul">
+
+                <li class="nav-item mx-auto mt-5">
+                    <a class="nav-link h4 font-weight-light text-white" href="#">Home</a>
+                </li>
+                <li class="nav-item mx-auto mt-3">
+                    <a class="nav-link h4 font-weight-light text-white" href="#">About</a>
+                </li>
+
+            </ul>
+            <p class="copyright h6 w-100 font-weight-light mx-auto"> &copy; COPYRIGHT 2020 ESMATULLAH NIAZI</p>
+        </div>
+        <nav class="navbar navbar-expand-md px-lg-5 bg-light">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">
+                <!-- <img src="https://img.icons8.com/color/96/000000/coronavirus.png" /> -->
+                <img src="https://img.icons8.com/nolan/96/coronavirus.png" width="15%" />
+                <span>Cov-19 tracker</span>
+            </a>
+
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" trgt="nav" id="navBtn">
+              <span ><img src="https://img.icons8.com/material/24/000000/menu--v1.png"/></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">source</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
     </header>
     <main class="container-fluid px-5 py-3">
         <section class="row">
@@ -62,7 +106,7 @@
         <div class="row ">
             <hr class="col-10 col-md-8 col-lg-6 mx-auto">
         </div>
-        <section class=" global row my-4">
+        <section class=" global row my-4 px-lg-5">
             <h3 class="col-12 mb-5 h2 text-center font-weight-light">Global</h3>
             <div class="col-lg-6 col-12 p-0 row mx-auto">
                 <div class="total col-12 p-0 card mb-3 shadow rounded card-total fade">
@@ -167,12 +211,12 @@
                     </div>
                 </div> -->
             </div>
-            <div class="col-12 search-canvas">
+            <div class="col-12 col-lg-10 mx-auto search-canvas">
                 <div class="loader-search">
 
 
-                    <svg class="svg-search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="10%" height="10%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-                       <circle cx="50" cy="50" fill="none" stroke="#fff" stroke-width="3" r="37" stroke-dasharray="174.35839227423352 60.119464091411174" transform="rotate(83.2789 50 50)">
+                    <svg class="svg-search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="30%" height="30%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                       <circle cx="50" cy="50" fill="none" stroke="#1d6bfd" stroke-width="3" r="37" stroke-dasharray="174.35839227423352 60.119464091411174" transform="rotate(83.2789 50 50)">
                          <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.0416666666666665s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
                        </circle>
                        </svg>

@@ -22,7 +22,7 @@ function fadeEffect(e) {
     // console.log(window.innerHeight);
     var num = document.querySelectorAll(".fade");
     var fadePoint = window.innerHeight / 1.4;
-    var num2 = 0;
+
 
     for (let i = 0; i < num.length; i++) {
         if (num[i].getBoundingClientRect().top <= fadePoint) {
@@ -32,16 +32,13 @@ function fadeEffect(e) {
             // }
             num[i].classList.remove("fade");
             num[i].classList.add("apear");
-            num2++;
+
             console.log("done");
             // this.removeEventListener("scroll", run);
         }
 
     }
-    if (num2 === num.length) {
-        window.removeEventListener("scroll", fadeEffect);
-        console.log("donee");
-    }
+
 }
 //navbtn
 
@@ -66,7 +63,7 @@ $(document).ready(() => {
         'querySet': undefined,
         'page': 1,
         'rows': 10,
-        'window': 3
+        'window': 2
 
     }
     getData();
@@ -90,7 +87,7 @@ $(document).ready(() => {
                 search(data);
                 getLocationAndInsertIt(data);
 
-
+                worldMap(data);
 
             } else {
                 console.log("NOo")
@@ -148,6 +145,45 @@ $(document).ready(() => {
         $("#list").append(datalist);
     }
     ////////ajax end/////
+    ///world map
+    function worldMap(data) {
+        $(".world-map-country-card").hide()
+        var el = document.getElementsByClassName("jvectormap-region");
+        for (let i = 0; i < el.length; i++) {
+            el[i].addEventListener("mouseenter", (e) => { worldMapFunction(e.target) })
+        }
+
+        function worldMapFunction(e) {
+            $(".world-map-country-card").show();
+            let countryCode = e;
+            if (countryCode.hasAttribute("data-code")) {
+                countryCode = countryCode.getAttribute("data-code")
+                for (let i = 0; i < data.length; i++) {
+                    if (countryCode == data[i].countryCode) {
+                        let country = data[i].country;
+                        let total = data[i].totalConfirmed;
+                        let active = data[i].activeCases;
+                        let death = data[i].totalDeaths;
+                        let recoverd = data[i].totalRecovered;
+                        $(".world-map-country-card").empty();
+                        let html = ` <div class="card shadow rounded apear">
+                        <div class="card-body text-center">
+                            <p class="hh4 font-weight-light"><span><img class="flag-icon" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${countryCode.toLowerCase()}.svg" alt="${country}-flag"></span> ${country}</p>
+                            <p class="h4 font-weight-light text-primary">Total ${total}</p>
+                            <p class="h4 font-weight-light text-warning">Active ${active} <span class="badge badge-warning">${getPercent(total,active)}%</span></p>
+                            <p class="h4 font-weight-light text-danger">Death ${death} <span class="badge badge-danger">${getPercent(total,death)}%</span></p>
+                            <p class="h4 font-weight-light  text-success">Recoverd ${recoverd} <span class="badge badge-success">${getPercent(total,recoverd)}%</span></p>
+                           </div>
+                          </div>`
+                            // $(".world-map-country-card").show();
+                        $(".world-map-country-card").append(html);
+                    }
+                }
+            }
+        }
+    }
+
+    ///
     //top ten countries//
     async function topTenCountries() {
 
@@ -249,11 +285,11 @@ $(document).ready(() => {
         }
 
         if (state.page != 1) {
-            ul.innerHTML = ` <li class="page-item btn-page" ><button class="page-link"  data-page="1">first</button></li>` + ul.innerHTML;
+            ul.innerHTML = ` <li class="page-item btn-page" ><button class="page-link "  data-page="1">1</button></li><li class="page-item d-flex flex-column mx-2 justify-content-center" >...</li>` + ul.innerHTML;
         }
 
         if (state.page != pages) {
-            ul.innerHTML += ` <li class="page-item btn-page" ><button class="page-link" href="" data-page="${pages}">last</button></li>`
+            ul.innerHTML += ` <li class="page-item d-flex flex-column mx-2 justify-content-center" >...</li><li class="page-item btn-page" ><button class="page-link"  data-page="${pages}">${pages}</button></li>`
         }
 
 
@@ -588,7 +624,9 @@ $(document).ready(() => {
         $("#search-card").hide();
         document.querySelector("#btn-search").addEventListener("click", () => {
             $("#search-card").empty();
-            $(".search-canvas").hide();
+            // $(".search-canvas").hide();
+            $("#search-card").hide();
+            $("#search-canvas").hide();
             $(".loader-search").fadeIn(600);
             let code = document.getElementById("textBox").value.toUpperCase();
             let condition = false;
@@ -606,6 +644,7 @@ $(document).ready(() => {
                         console.log(country);
                         $(".search-canvas").show();
                         insertCountryDataChart(data[i].countryCode, 'search-canvas');
+                        $("#search-canvas").show();
                         let card = `<div class="card shadow rounded apear">
                         <div class="card-body text-center mt-3" id="search-card-body">
                         <p class="h4 font-weight-light"><span><img class="flag-icon" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${countryCode.toLowerCase()}.svg" alt="${country}-flag" ></span> ${country}</p>

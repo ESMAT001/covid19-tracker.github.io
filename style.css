@@ -96,6 +96,7 @@ header {
     position: absolute;
     top: 20%;
     left: 48%;
+    width: fit-content;
     transform: translate(-50%, -20%);
 }
 
@@ -187,6 +188,20 @@ td {
     width: 2.8rem;
     border-radius: 4px;
     /* margin-right: 10px; */
+}
+
+.search-canvas {
+    overflow: hidden;
+}
+
+.first::after {
+    content: "--";
+    position: relative;
+}
+
+.last::before {
+    content: "--";
+    position: relative;
 }
 
 @media (max-width:540px) {
